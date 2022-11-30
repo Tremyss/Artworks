@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap%27");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Sorts Mill Goudy", serif;
+  font-size: 1.6rem;
+  /* width: 100%; */
+  /* height: 100vh; */
+  padding-bottom: 2rem;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ! COLOR THEMES */
+
+:root {
+  --primary: #3d332a;
+  --secondary: #4a3e34;
+  --tertiary: #9a8a78;
+  --key: #ffb119;
+  --accent: #f5dec3;
+}
+
+/* ? NAVBAR SECTION */
+
+.nav-bar {
+  z-index: 99;
+  background-color: var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.nav-list {
+  padding: 0 3rem;
+  margin-inline: auto;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--accent);
+}
+
+.nav-item {
+  min-width: 120px;
+  /* border-right: 1px solid var(--accent); */
+}
+
+.nav-item:last-child {
+  margin-left: auto;
+  border-right: none;
+}
+
+.nav-item a {
+  display: block;
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 10px;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+.search-input {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  color: var(--accent);
+  background-color: transparent;
+  border: transparent;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+/*END OF NAVBAR SECTION*/
+
+/* ? SLIDER SECTION */
+/* Döntsük el és alakítsuk ki később pls */
+/* ! END OF SLIDER SECTION */
+
+/* ? BACKGROUND SECTION */
+
+#background {
+  background-color: var(--secondary);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#mainframe {
+  background-color: var(--primary);
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ! END OF BACKGROUND SECTION */
+
+/* ? IMAGE GRID SECTION */
+
+#image-grid {
+  width: 90%;
+  padding: 7.5rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 5rem;
+  column-gap: 3rem;
+}
+
+.image-card {
+  /* border: solid 1px red; */
+  padding: 5px;
+  /* flex: 0 0 290px; */
+  width: 28%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.3rem;
+}
+
+.image-card img {
+  position: relative;
+  width: 100%;
+  /* min-width: 100%; */
+  /* margin-bottom: 1rem; */
+  margin-bottom: auto;
+}
+
+.image-card-middle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.image-card-maininfo {
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.image-card-title {
+  color: var(--key);
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.image-card-author {
+  color: var(--tertiary);
+  font-weight: bold;
+}
+
+.image-card-download-button {
+  background-color: var(--accent);
+  border-radius: 3px;
+  z-index: 90;
+  height: 3rem;
+  width: 3rem;
+  margin-right: 0.5rem;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-card-download-button:hover {
+  cursor: pointer;
+  /* https://getcssscan.com/css-box-shadow-examples #36 */
+  box-shadow: var(--accent) 0px 1px 3px 0px,
+    rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
+}
+
+.image-card-details {
+  color: var(--accent);
+  text-align: justify;
+}
+
+.image-card-image {
+  background-color: rgb(80, 57, 80);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+/* ! END OF IMAGE GRID SECTION */
