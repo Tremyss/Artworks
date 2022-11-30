@@ -18,6 +18,7 @@ const Navbar = (props) => {
             <a href="#top">Login</a>
           </li>
           <li className="nav-item">
+          <div className="tooltip">
             <input 
             className="search-input" 
             type="search" 
@@ -25,6 +26,10 @@ const Navbar = (props) => {
             id="search-api"
             placeholder="search MET database"
             onKeyUp={(event) => props.onSearch(event.target.value)} />
+            <span className="tooltiptext">
+                Search for artist or title
+              </span>
+            </div>
           </li>
         </ul>
       </div>
