@@ -16,7 +16,7 @@ function ImageCard({ image }) {
       <div className="image-card-text-holder">
         <p className="image-card-details">
           <a target="_blank" href={image.objectURL}>
-            More info about artwork
+            More info
           </a>
         </p>
       </div>

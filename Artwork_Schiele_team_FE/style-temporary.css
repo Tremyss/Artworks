@@ -8,6 +8,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -134,23 +135,24 @@ body {
   /* border: solid 1px red; */
   padding: 5px;
   /* flex: 0 0 290px; */
-  width: 28%;
+  width: 30%;
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  row-gap: 0.3rem;
+  row-gap: 0.5rem;
 }
 
 .image-card img {
   position: relative;
   width: 100%;
-  /* min-width: 100%; */
-  /* margin-bottom: 1rem; */
-  margin-bottom: auto;
+  margin-bottom: 1rem;
+  /* margin-bottom: auto; */
 }
 
 .image-card-middle {
+  /* background-color: aqua; */
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -158,30 +160,34 @@ body {
 }
 
 .image-card-maininfo {
-  margin-left: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .image-card-title {
+  /* background-color: firebrick; */
   color: var(--key);
+  text-align: left;
   font-weight: bolder;
-  font-size: larger;
+  font-size: 1.9rem;
 }
 
 .image-card-author {
   color: var(--tertiary);
   font-weight: bold;
+  font-size: 1.7rem;
 }
 
 .image-card-download-button {
   background-color: var(--accent);
   border-radius: 3px;
   z-index: 90;
-  height: 3rem;
-  width: 3rem;
-  margin-right: 0.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: 0 0.5rem;
   align-self: center;
   justify-self: center;
   display: flex;
@@ -195,16 +201,23 @@ body {
   box-shadow: var(--accent) 0px 1px 3px 0px,
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
+.image-card-text-holder {
+  width: 100%;
+}
 
 .image-card-details {
   color: var(--accent);
-  text-align: justify;
+  text-align: right;
+}
+
+.image-card-details a {
+  color: inherit;
+  text-decoration: underline;
 }
 
 .image-card-image {
   background-color: rgb(80, 57, 80);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
 /* ! END OF IMAGE GRID SECTION */
