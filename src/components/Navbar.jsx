@@ -12,10 +12,10 @@ const Navbar = (props) => {
             <a href="#top">Collection</a>
           </li>
           <li className="nav-item">
-            <a href="#top">MUSEUM LOGO</a>
+            <a href="#top">Logo</a>
           </li>
           <li className="nav-item">
-            <a href="#top">Login | Register</a>
+            <a href="#top">Login</a>
           </li>
           <li className="nav-item">
             <input 

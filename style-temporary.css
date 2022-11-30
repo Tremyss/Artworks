@@ -48,7 +48,7 @@ body {
 }
 
 .nav-list {
-  padding: 0 3rem;
+  padding: 0 2rem;
   margin-inline: auto;
   list-style-type: none;
   display: flex;
@@ -58,8 +58,7 @@ body {
 }
 
 .nav-item {
-  min-width: 120px;
-  /* border-right: 1px solid var(--accent); */
+  width: 14.5rem;
 }
 
 .nav-item:last-child {
@@ -70,10 +69,10 @@ body {
 .nav-item a {
   display: block;
   color: var(--accent);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  text-align: center;
-  padding: 15px 10px;
+  text-align: left;
+  padding: 1rem 1rem;
   text-decoration: none;
 }
 
@@ -83,8 +82,7 @@ body {
 }
 
 .search-input {
-  padding: 0.5rem;
-  margin-right: 2rem;
+  padding: 0.4rem;
   color: var(--accent);
   background-color: transparent;
   border: transparent;
@@ -112,7 +110,7 @@ body {
 
 #mainframe {
   background-color: var(--primary);
-  width: 95%;
+  width: 90%;
   display: flex;
   justify-content: center;
 }
@@ -122,7 +120,7 @@ body {
 /* ? IMAGE GRID SECTION */
 
 #image-grid {
-  width: 90%;
+  width: 95%;
   padding: 7.5rem 2rem 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -188,7 +186,7 @@ body {
   height: 2.5rem;
   width: 2.5rem;
   margin: 0 0.5rem;
-  align-self: center;
+  align-self: flex-end;
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -221,3 +219,31 @@ body {
 }
 
 /* ! END OF IMAGE GRID SECTION */
+
+/* ! START OF MEDIA QUERY SECTION */
+
+/* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
+/* * tablet nézet: */
+@media screen and (max-width: 1000px) {
+  .image-card {
+    width: 45%;
+  }
+}
+
+/* * mobil nézet: */
+@media screen and (max-width: 500px) {
+  .nav-list {
+    padding: 0 1rem;
+  }
+
+  .nav-item a {
+    font-size: 1.4rem;
+    padding: 1.2rem 0.8rem;
+  }
+
+  .image-card {
+    width: 100%;
+  }
+}
+
+/* ! END OF MEDIA QUERY SECTION */
