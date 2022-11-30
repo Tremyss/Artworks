@@ -6,6 +6,7 @@ import getDataLoop from "./api/GetDataLoop.js"
 // Import components
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
+import ImageDetails from './components/ImageDetails'
 
 // SET API URL-s here (burned in query params)
 const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
@@ -22,6 +23,8 @@ function App() {
   const [images, setImages] = useState([])
   // Input state
   const [inputVal, setInputVal] = useState("")
+  // More info state
+  const [id, setId] = useState(null);
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state
@@ -46,6 +49,10 @@ function App() {
   }
   const filteredImages = images.filter(img => (img.title.startsWith(inputVal)));
 
+  //select image to render more details
+  console.log(images)
+  const selectedImage = images.find(img => img.objectID===id)
+  console.log(selectedImage)
 
   return (
     <div className="App">
@@ -62,10 +69,14 @@ function App() {
                   <ImageCard
                   key={image.objectID}
                   image={image}
+                  onShowDetails={id => setId(id)}
                 />
                 ))}
             </div>
           </div>
+          {id!== null && 
+          <ImageDetails
+          selectedImage={selectedImage}/>}
         </div>
       </main>
 
