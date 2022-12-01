@@ -3,28 +3,47 @@ import "./App.css"
 // Import functions
 import getData from "./api/GetData.js"
 import getDataLoop from "./api/GetDataLoop.js"
+import urlAssembler from "./api/urlAssembler.js"
 // Import components
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
 import ImageDetails from "./components/ImageDetails.jsx"
 
-// SET API URL-s here (burned in query params)
-const apiSearchUrl =
-  "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
+// SET API URL-s here (burned in query params) 
+const apiObjectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
+// Resturns 14 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
 // Resturns 20 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&medium=Paintings&hasImages=true&isHighlight=true"
 // Resturns 75 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true"
-const apiObjectUrl =
-  "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
+
 
 function App() {
+
   // ! STATES
   // App state
   const [searchResults, setSearchResults] = useState([])
   const [images, setImages] = useState([])
-  // Input state
+  // Search API URL state
+  const [apiSearchUrl, setApiSearchUrl] = useState("https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true")
+  // Search input states
   const [inputVal, setInputVal] = useState("")
-  // More info state
-  const [selectedImageId, setSelectedImageId] = useState(null)
+  const [searchHighlighted, setSearchHighlighted] = useState(false)
+  const [searchTitle, setSearchTitle] = useState(false)
+  // ImageDetails - Single Image Card state
+  const [selectedImageId, setSelectedImageId] = useState(null);
+
+/*   // ? SEARCH INPUT ASSEMBLY  törölni
+  useEffect(() => console.log(searchHighlighted), [searchHighlighted])
+  useEffect(() => console.log(searchTitle), [searchTitle]) */
+  
+  /* 
+  //Search and render when input fields changing
+  useEffect(()=> {
+    const searchUrl = urlAssembler(inputVal, searchTitle, searchHighlighted)
+    setApiSearchUrl(searchUrl)
+    console.log(apiSearchUrl) //valamiért undefined jön vissza
+    initPage()
+  },[inputVal, searchHighlighted, searchTitle])
+ */
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state
@@ -32,7 +51,7 @@ function App() {
     const searchResults = await getData(apiSearchUrl)
     setSearchResults(searchResults)
     const searchedImages = await getDataLoop(apiObjectUrl, searchResults)
-    setImages(searchedImages) // * Itt megvan az App state :D
+    setImages(searchedImages)
   }
 
   // Kick in window:onLoad
@@ -40,52 +59,54 @@ function App() {
     initPage()
   }, [])
 
+
   // ! UTIL FUNCTIONS
+  // Select image to render more details
+  const selectedImage = images.find(img => img.objectID === selectedImageId)
+
   // Download handler
 
-  // Search handler
+  // Search handlers
   const onSearch = (search) => {
     setInputVal(search)
   }
-  const filteredImages = images.filter((img) => img.title.startsWith(inputVal)) //itt kell majd felhasználni a search input valuet
 
-  // Select image to render more details
-  console.log(images)
-  const selectedImage = images.find((img) => img.objectID === selectedImageId)
-  console.log(selectedImage)
 
   return (
     <div className="App">
       <nav>
-        <Navbar onSearch={onSearch} />
+        <Navbar
+          onSearch={onSearch}
+          searchTitle={searchTitle}
+          searchHighlighted={searchHighlighted}
+          onClickHighlight={setSearchHighlighted}
+          onClickTitle={setSearchTitle}
+        />
       </nav>
 
       <main>
         <div id="background">
           <div id="mainframe">
-            <div class="noise"></div>
+          <div class="noise"></div>
             <div id="image-grid">
-              {images.length === 0 ? (
-                <p className="image-card-title">Loading...</p>
-              ) : (
-                filteredImages.map((image) => (
+              {images.length === 0 ?
+                <p className="image-card-title">Loading...</p> :
+                images.map(image => (
                   <ImageCard
                     key={image.objectID}
                     image={image}
-                    onShowDetails={(id) => setSelectedImageId(id)}
+                    onShowDetails={id => setSelectedImageId(id)}
                   />
-                ))
-              )}
+                ))}
             </div>
           </div>
-          {selectedImageId !== null && (
+          {selectedImageId !== null &&
             <ImageDetails
               selectedImage={selectedImage}
-              onClose={() => setSelectedImageId(null)}
-            />
-          )}
+              onClose={() => setSelectedImageId(null)} />}
         </div>
       </main>
+
     </div>
   )
 }
