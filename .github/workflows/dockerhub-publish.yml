@@ -1,0 +1,50 @@
+name: DockerHub
+
+on:
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  # branches:
+  #    - main
+  #repository_dispatch:
+  #  types: [new-build]
+  workflow_dispatch:
+     
+# Define working directory
+defaults:
+  run:
+    working-directory: /out/artifacts/fileshare_jar
+
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+        # Dockerhub login info has to be included in separate repo secrets as
+        # DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD - register an account first
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+        # Create a repo in DockerHub named <docker username>/schiele-web
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/schiele-web
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          # TODO - Ez alatt módosítani az elérési utat és uncommentelni 
+          #context: ./out/artifacts/fileshare_jar
+          push: true
+          #tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/web:latest
+          labels: ${{ steps.meta.outputs.labels }}
