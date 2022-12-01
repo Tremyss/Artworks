@@ -35,7 +35,7 @@ body {
   --accent: #f5dec3;
 }
 
-/* ? NAVBAR SECTION */
+/* ? START OF NAVBAR SECTION */
 
 .nav-bar {
   z-index: 99;
@@ -125,11 +125,11 @@ body {
 
 /*END OF NAVBAR SECTION*/
 
-/* ? SLIDER SECTION */
+/* ? START OF SLIDER SECTION */
 /* Döntsük el és alakítsuk ki később pls */
 /* ! END OF SLIDER SECTION */
 
-/* ? BACKGROUND SECTION */
+/* ? START OF BACKGROUND SECTION */
 
 #background {
   background-color: var(--secondary);
@@ -148,7 +148,7 @@ body {
 
 /* ! END OF BACKGROUND SECTION */
 
-/* ? IMAGE GRID SECTION */
+/* ? START OF IMAGE GRID SECTION */
 
 #image-grid {
   width: 95%;
@@ -251,7 +251,7 @@ body {
 
 /* ! END OF IMAGE GRID SECTION */
 
-/* ! START OF MEDIA QUERY SECTION */
+/* ? START OF MEDIA QUERY SECTION */
 
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
 /* * tablet nézet: */
@@ -280,9 +280,9 @@ body {
 /* ! END OF MEDIA QUERY SECTION */
 
 
-/* ! START OF IMAGEDETAILS SECTION */
+/* ? START OF IMAGEDETAILS (Single Card) SECTION */
 
-#ImageDetails-container {
+#single-card-blur {
   background-color: rgba(61,51,42, 0.75);
   width: 100%;
   height: 100%;
@@ -294,7 +294,7 @@ body {
   font-size: 1.2rem;
 }
 
-#ImageDetails {
+#single-card-background {
   background-color: var(--tertiary);
   width: 70%;
   padding: 20px;
@@ -304,22 +304,20 @@ body {
   align-items: center;
 }
 
-#ImageDetails img{
+#single-card-img-img {
   height: 50vh;
 }
 
-#ImageDetails div{
+#single-card-text-container div{
   padding: 3px;
 }
 
-
-#closingButton {
+#single-card-close-button {
   display: block;
   align-self: flex-end;
   border: none;
   background-color: var(--tertiary);
   cursor: pointer;
 }
-
 
 /* ! END OF IMAGEDETAILS SECTION */

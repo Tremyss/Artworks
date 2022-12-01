@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from "react"
+import "./App.css"
 // Import functions
 import getData from "./api/GetData.js"
 import getDataLoop from "./api/GetDataLoop.js"
 // Import components
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
-import ImageDetails from './components/ImageDetails'
+import ImageDetails from "./components/ImageDetails.jsx"
 
 // SET API URL-s here (burned in query params)
 const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
@@ -42,42 +42,46 @@ function App() {
 
 
   // ! UTIL FUNCTIONS
-  // Downloadhandler
+  // Download handler
 
+  // Search handler
   const onSearch = (search) => {
     setInputVal(search)
   }
-  const filteredImages = images.filter(img => (img.title.startsWith(inputVal)));
+  const filteredImages = images.filter(img => (img.title.startsWith(inputVal))) //itt kell majd felhasználni a search input valuet
 
-  //select image to render more details
+  // Select image to render more details
   console.log(images)
-  const selectedImage = images.find(img => img.objectID===selectedImageId)
+  const selectedImage = images.find(img => img.objectID === selectedImageId)
   console.log(selectedImage)
 
   return (
     <div className="App">
-      <Navbar
-       onSearch={onSearch}
-      />
+      <nav>
+        <Navbar
+          onSearch={onSearch}
+        />
+      </nav>
+
       <main>
         <div id="background">
           <div id="mainframe">
             <div id="image-grid">
-              {images.length===0 ?
+              {images.length === 0 ?
                 <p className="image-card-title">Loading...</p> :
                 filteredImages.map(image => (
                   <ImageCard
-                  key={image.objectID}
-                  image={image}
-                  onShowDetails={id => setSelectedImageId(id)}
-                />
+                    key={image.objectID}
+                    image={image}
+                    onShowDetails={id => setSelectedImageId(id)}
+                  />
                 ))}
             </div>
           </div>
-          {selectedImageId!== null && 
-          <ImageDetails
-          selectedImage={selectedImage}
-          onClose={()=> setSelectedImageId(null)}/>}
+          {selectedImageId !== null &&
+            <ImageDetails
+              selectedImage={selectedImage}
+              onClose={() => setSelectedImageId(null)} />}
         </div>
       </main>
 
