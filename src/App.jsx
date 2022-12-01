@@ -9,14 +9,14 @@ import Navbar from "./components/Navbar.jsx"
 import ImageDetails from "./components/ImageDetails.jsx"
 
 // SET API URL-s here (burned in query params)
-const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
+const apiSearchUrl =
+  "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
 // Resturns 20 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&medium=Paintings&hasImages=true&isHighlight=true"
 // Resturns 75 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true"
-const apiObjectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
-
+const apiObjectUrl =
+  "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
 
 function App() {
-
   // ! STATES
   // App state
   const [searchResults, setSearchResults] = useState([])
@@ -24,7 +24,7 @@ function App() {
   // Input state
   const [inputVal, setInputVal] = useState("")
   // More info state
-  const [selectedImageId, setSelectedImageId] = useState(null);
+  const [selectedImageId, setSelectedImageId] = useState(null)
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state
@@ -40,7 +40,6 @@ function App() {
     initPage()
   }, [])
 
-
   // ! UTIL FUNCTIONS
   // Download handler
 
@@ -48,43 +47,45 @@ function App() {
   const onSearch = (search) => {
     setInputVal(search)
   }
-  const filteredImages = images.filter(img => (img.title.startsWith(inputVal))) //itt kell majd felhasználni a search input valuet
+  const filteredImages = images.filter((img) => img.title.startsWith(inputVal)) //itt kell majd felhasználni a search input valuet
 
   // Select image to render more details
   console.log(images)
-  const selectedImage = images.find(img => img.objectID === selectedImageId)
+  const selectedImage = images.find((img) => img.objectID === selectedImageId)
   console.log(selectedImage)
 
   return (
     <div className="App">
       <nav>
-        <Navbar
-          onSearch={onSearch}
-        />
+        <Navbar onSearch={onSearch} />
       </nav>
 
       <main>
         <div id="background">
           <div id="mainframe">
+            <div class="noise"></div>
             <div id="image-grid">
-              {images.length === 0 ?
-                <p className="image-card-title">Loading...</p> :
-                filteredImages.map(image => (
+              {images.length === 0 ? (
+                <p className="image-card-title">Loading...</p>
+              ) : (
+                filteredImages.map((image) => (
                   <ImageCard
                     key={image.objectID}
                     image={image}
-                    onShowDetails={id => setSelectedImageId(id)}
+                    onShowDetails={(id) => setSelectedImageId(id)}
                   />
-                ))}
+                ))
+              )}
             </div>
           </div>
-          {selectedImageId !== null &&
+          {selectedImageId !== null && (
             <ImageDetails
               selectedImage={selectedImage}
-              onClose={() => setSelectedImageId(null)} />}
+              onClose={() => setSelectedImageId(null)}
+            />
+          )}
         </div>
       </main>
-
     </div>
   )
 }

@@ -1,9 +1,11 @@
-
-function ImageCard({image, onShowDetails}) {
-
+function ImageCard({ image, onShowDetails }) {
   return (
     <div className="image-card">
-      <img className="image-card-image" src={image.primaryImageSmall} alt={image.title} />
+      <img
+        className="image-card-image"
+        src={image.primaryImageSmall}
+        alt={image.title}
+      />
       <div className="image-card-middle">
         <div className="image-card-maininfo">
           <p className="image-card-title">{image.title}</p>
@@ -16,6 +18,7 @@ function ImageCard({image, onShowDetails}) {
       <div className="image-card-text-holder">
         <p className="image-card-details">
           <button
+            className="image-card-details-btn"
             onClick={() => onShowDetails(image.objectID)}
           >
             More info
