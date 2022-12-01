@@ -3,7 +3,9 @@ const ImageDetails = ({selectedImage, onClose}) => {
   return (
     <div id="ImageDetails-container">
       <div id="ImageDetails">
-        <button id="closingButton" onClick={onClose}>X</button>
+        <button id="closingButton" onClick={onClose}>
+        <span className="material-symbols-outlined">close</span>
+        </button>
         <img src={selectedImage.primaryImageSmall} alt="" />
         <div>
           <div><strong>Title: </strong> {selectedImage.title}</div>
