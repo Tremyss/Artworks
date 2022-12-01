@@ -1,5 +1,5 @@
 
-const Navbar = (props) => {
+const Navbar = ({onSearch}) => {
 
   return (
     <div>
@@ -25,7 +25,7 @@ const Navbar = (props) => {
             name="search-api" 
             id="search-api"
             placeholder="search MET database"
-            onKeyUp={(event) => props.onSearch(event.target.value)} />
+            onKeyUp={(event) => onSearch(event.target.value)} />
             <span className="tooltiptext">
                 Search for artist or title
               </span>

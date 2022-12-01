@@ -1,13 +1,13 @@
 
-function ImageCard(props) {
+function ImageCard({image, onShowDetails}) {
 
   return (
     <div className="image-card">
-      <img className="image-card-image" src={props.image.primaryImageSmall} alt={props.image.title} />
+      <img className="image-card-image" src={image.primaryImageSmall} alt={image.title} />
       <div className="image-card-middle">
         <div className="image-card-maininfo">
-          <p className="image-card-title">{props.image.title}</p>
-          <p className="image-card-author">{props.image.artistDisplayName}</p>
+          <p className="image-card-title">{image.title}</p>
+          <p className="image-card-author">{image.artistDisplayName}</p>
         </div>
         <div className="image-card-download-button">
           <span className="material-symbols-outlined">download</span>
@@ -16,7 +16,7 @@ function ImageCard(props) {
       <div className="image-card-text-holder">
         <p className="image-card-details">
           <button
-            onClick={() => props.onShowDetails(props.image.objectID)}
+            onClick={() => onShowDetails(image.objectID)}
           >
             More info
           </button>

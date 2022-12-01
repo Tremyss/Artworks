@@ -91,6 +91,7 @@ body {
 .search-input:focus {
   outline: none;
 }
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -100,7 +101,7 @@ body {
   visibility: hidden;
   width: 120px;
   background-color: var(--accent);
-  color:var(--primary);
+  color: var(--primary);
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
@@ -109,8 +110,8 @@ body {
   top: 100%;
   left: 50%;
   margin-left: -60px;
-  
-  
+
+
   /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
   opacity: 0;
   transition: opacity 1s;
@@ -212,7 +213,6 @@ body {
 .image-card-download-button {
   background-color: var(--accent);
   border-radius: 3px;
-  z-index: 90;
   height: 2.5rem;
   width: 2.5rem;
   margin: 0 0.5rem;
@@ -229,6 +229,7 @@ body {
   box-shadow: var(--accent) 0px 1px 3px 0px,
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
+
 .image-card-text-holder {
   width: 100%;
 }
@@ -277,3 +278,48 @@ body {
 }
 
 /* ! END OF MEDIA QUERY SECTION */
+
+
+/* ! START OF IMAGEDETAILS SECTION */
+
+#ImageDetails-container {
+  background-color: rgba(61,51,42, 0.75);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  padding-top: 50px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  font-size: 1.2rem;
+}
+
+#ImageDetails {
+  background-color: var(--tertiary);
+  width: 70%;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#ImageDetails img{
+  height: 50vh;
+}
+
+#ImageDetails div{
+  padding: 3px;
+}
+
+
+#closingButton {
+  display: block;
+  align-self: flex-end;
+  border: none;
+  background-color: var(--tertiary);
+  cursor: pointer;
+}
+
+
+/* ! END OF IMAGEDETAILS SECTION */

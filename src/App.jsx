@@ -24,7 +24,7 @@ function App() {
   // Input state
   const [inputVal, setInputVal] = useState("")
   // More info state
-  const [id, setId] = useState(null);
+  const [selectedImageId, setSelectedImageId] = useState(null);
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state
@@ -51,7 +51,7 @@ function App() {
 
   //select image to render more details
   console.log(images)
-  const selectedImage = images.find(img => img.objectID===id)
+  const selectedImage = images.find(img => img.objectID===selectedImageId)
   console.log(selectedImage)
 
   return (
@@ -69,14 +69,15 @@ function App() {
                   <ImageCard
                   key={image.objectID}
                   image={image}
-                  onShowDetails={id => setId(id)}
+                  onShowDetails={id => setSelectedImageId(id)}
                 />
                 ))}
             </div>
           </div>
-          {id!== null && 
+          {selectedImageId!== null && 
           <ImageDetails
-          selectedImage={selectedImage}/>}
+          selectedImage={selectedImage}
+          onClose={()=> setSelectedImageId(null)}/>}
         </div>
       </main>
 
