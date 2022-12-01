@@ -1,4 +1,4 @@
-const ImageDetails = ({selectedImage}) => {
+const ImageDetails = ({selectedImage, onClose}) => {
 
   return (
     <div id="ImageDetails-container">
