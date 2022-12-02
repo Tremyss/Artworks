@@ -4,11 +4,11 @@ function urlAssembler(string, isTitle, IsHighlighted) {
     const hasImages = true
     const url = `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${keyword}&title=${isTitle}&isHighlight=${IsHighlighted}&medium=${medium}&hasImages=${hasImages}`
     console.log(url)
-    // return url
+    return url
 }
 
 export default urlAssembler
 
-//Az baj, hogy ha az input mező üres, akkor a q=semmi lesz itt
+//Ha az input mező üres, akkor a q=semmi lesz itt
 
 

@@ -35,15 +35,15 @@ function App() {
   useEffect(() => console.log(searchHighlighted), [searchHighlighted])
   useEffect(() => console.log(searchTitle), [searchTitle]) */
   
-  /* 
-  //Search and render when input fields changing
+  
+/*   //Search and render when input fields changing
   useEffect(()=> {
     const searchUrl = urlAssembler(inputVal, searchTitle, searchHighlighted)
     setApiSearchUrl(searchUrl)
     console.log(apiSearchUrl) //valamiért undefined jön vissza
     initPage()
-  },[inputVal, searchHighlighted, searchTitle])
- */
+  },[inputVal, searchHighlighted, searchTitle]) */
+
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state

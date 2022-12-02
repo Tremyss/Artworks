@@ -40,7 +40,7 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
                 name="Searc-title"
                 id="search-title"
                 value={searchTitle}
-                onClick={event => onClickTitle(!searchTitle)}
+                onClick={() => onClickTitle(!searchTitle)}
               />
               <span className="tooltiptext">
                 Search title
@@ -53,7 +53,7 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
                 name="search-api"
                 id="search-api"
                 placeholder="search MET database"
-                onKeyUp={(event) => onSearch(event.target.value)}
+                onKeyDown={(event) => {if (event.key === "Enter") {onSearch(event.target.value)}}}
               />
               <span className="tooltiptext">
                 Search among Metropolitan Museum's paintings
