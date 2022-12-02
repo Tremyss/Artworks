@@ -36,13 +36,13 @@ function App() {
   useEffect(() => console.log(searchTitle), [searchTitle]) */
   
   
-/*   //Search and render when input fields changing
+  //Search and render when input fields changing
   useEffect(()=> {
     const searchUrl = urlAssembler(inputVal, searchTitle, searchHighlighted)
     setApiSearchUrl(searchUrl)
-    console.log(apiSearchUrl) //valamiért undefined jön vissza
+    console.log(apiSearchUrl) 
     initPage()
-  },[inputVal, searchHighlighted, searchTitle]) */
+  },[inputVal, searchHighlighted, searchTitle])
 
 
   // ! INIT FUNCTIONS

@@ -56,7 +56,8 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
                 onKeyDown={(event) => {if (event.key === "Enter") {onSearch(event.target.value)}}}
               />
               <span className="tooltiptext">
-                Search among Metropolitan Museum's paintings
+                Search among Metropolitan Museum's paintings:
+                Type keyword than press Enter.
               </span>
             </div>
           </li>
