@@ -1,4 +1,5 @@
 const ImageDetails = ({ selectedImage, onClose }) => {
+  console.log(selectedImage)
   return (
     <div id="single-card-blur">
       <div id="single-card-background">
@@ -8,7 +9,7 @@ const ImageDetails = ({ selectedImage, onClose }) => {
         <div id="single-card-img-container">
           <img
             id="single-card-img-img"
-            src={selectedImage.primaryImage}
+            src={`https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/300,/0/default.jpg`}
             alt={selectedImage.title}
           />
         </div>
@@ -20,20 +21,19 @@ const ImageDetails = ({ selectedImage, onClose }) => {
             </p>
             <p id="single-card-author">
               <span className="single-card-title-span">Artist: </span>
-              {selectedImage.artistDisplayName}
+              {selectedImage.artist_display}
             </p>
           </div>
           <div id="single-card-details-container">
             <div id="single-card-details-text-container">
               <p className="single-card-details-text">
-                {selectedImage.artistDisplayBio}
-              </p>
-              <p className="single-card-details-text">{selectedImage.medium}</p>
-              <p className="single-card-details-text">
-                {selectedImage.objectDate}
+                {selectedImage.artwork_type_title}
               </p>
               <p className="single-card-details-text">
-                {selectedImage.repository}
+                {selectedImage.date_display}
+              </p>
+              <p className="single-card-details-text">
+                {selectedImage.style_title}
               </p>
             </div>
             <div id="single-card-button-container">

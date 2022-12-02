@@ -52,7 +52,7 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
                 type="search"
                 name="search-api"
                 id="search-api"
-                placeholder="search MET database"
+                placeholder="search"
                 onKeyDown={(event) => {if (event.key === "Enter") {onSearch(event.target.value)}}}
               />
               <span className="tooltiptext">

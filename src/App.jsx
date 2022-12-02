@@ -9,18 +9,12 @@ import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
 import ImageDetails from "./components/ImageDetails.jsx"
 
-// SET API URL-s here (burned in query params) 
-const apiObjectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
-// Resturns 14 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true"
-// Resturns 20 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&medium=Paintings&hasImages=true&isHighlight=true"
-// Resturns 75 pcs: const apiSearchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true"
 
 
 function App() {
 
   // ! STATES
   // App state
-  const [searchResults, setSearchResults] = useState([])
   const [images, setImages] = useState([])
   // Search API URL state
   const [apiSearchUrl, setApiSearchUrl] = useState("https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true")
@@ -31,27 +25,15 @@ function App() {
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null);
 
-/*   // ? SEARCH INPUT ASSEMBLY  törölni
-  useEffect(() => console.log(searchHighlighted), [searchHighlighted])
-  useEffect(() => console.log(searchTitle), [searchTitle]) */
+  console.log(images)
   
-  
-  //Search and render when input fields changing
-  useEffect(()=> {
-    const searchUrl = urlAssembler(inputVal, searchTitle, searchHighlighted)
-    setApiSearchUrl(searchUrl)
-    console.log(apiSearchUrl) 
-    initPage()
-  },[inputVal, searchHighlighted, searchTitle])
 
 
   // ! INIT FUNCTIONS
   // Call Fetch function and set App state
   const initPage = async () => {
-    const searchResults = await getData(apiSearchUrl)
-    setSearchResults(searchResults)
-    const searchedImages = await getDataLoop(apiObjectUrl, searchResults)
-    setImages(searchedImages)
+    const results = await getData()
+    setImages(results)
   }
 
   // Kick in window:onLoad
@@ -62,7 +44,7 @@ function App() {
 
   // ! UTIL FUNCTIONS
   // Select image to render more details
-  const selectedImage = images.find(img => img.objectID === selectedImageId)
+  const selectedImage = images.find(img => img.id === selectedImageId)
 
   // Download handler
 
@@ -87,13 +69,13 @@ function App() {
       <main>
         <div id="background">
           <div id="mainframe">
-          <div class="noise"></div>
+          <div className="noise"></div>
             <div id="image-grid">
               {images.length === 0 ?
                 <p className="image-card-title">Loading...</p> :
                 images.map(image => (
                   <ImageCard
-                    key={image.objectID}
+                    key={image.id}
                     image={image}
                     onShowDetails={id => setSelectedImageId(id)}
                   />
