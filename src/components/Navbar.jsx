@@ -1,5 +1,5 @@
 
-const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, onClickTitle }) => {
+const Navbar = ({onSearch}) => {
 
   return (
     <div>
@@ -19,34 +19,6 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
           </li>
           <li className="nav-item">
             <div className="tooltip">
-              <label htmlFor="search-checkbox">highlighted</label>
-              <input
-                className="search-checkbox"
-                type="checkbox"
-                name="Search-highlighted"
-                id="search-highlighted"
-                value={searchHighlighted}
-                onClick={() => onClickHighlight(!searchHighlighted)}
-                />
-              <span className="tooltiptext">
-                Search highlighted pictures
-              </span>
-            </div>
-            <div className="tooltip">
-            <label htmlFor="search-checkbox">title</label>
-              <input
-                className="search-checkbox"
-                type="checkbox"
-                name="Searc-title"
-                id="search-title"
-                value={searchTitle}
-                onClick={() => onClickTitle(!searchTitle)}
-              />
-              <span className="tooltiptext">
-                Search title
-              </span>
-            </div>
-            <div className="tooltip">
               <input
                 className="search-input"
                 type="search"
@@ -56,7 +28,7 @@ const Navbar = ({ onSearch, searchTitle, onClickHighlight, searchHighlighted, on
                 onKeyDown={(event) => {if (event.key === "Enter") {onSearch(event.target.value)}}}
               />
               <span className="tooltiptext">
-                Search among Metropolitan Museum's paintings:
+                Search among Art Institue of Chicago's artworks:
                 Type keyword than press Enter.
               </span>
             </div>
