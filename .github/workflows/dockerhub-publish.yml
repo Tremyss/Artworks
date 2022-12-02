@@ -1,13 +1,13 @@
 name: DockerHub
 
 on:
-  #push:
-  #  branches: [ "main" ]
-  #pull_request:
-  # branches:
-  #    - main
-  #repository_dispatch:
-  #  types: [new-build]
+  push:
+    branches: [ "main" ]
+  pull_request:
+   branches:
+      - main
+  repository_dispatch:
+    types: [new-build]
   workflow_dispatch:
      
 # Define working directory
