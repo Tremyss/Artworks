@@ -5,6 +5,10 @@ function ImageCard({ image, onShowDetails }) {
         className="image-card-image"
         src={`https://www.artic.edu/iiif/2/${image.image_id}/full/300,/0/default.jpg`}
         alt={image.title}
+        style={{
+          backgroundImage:`url(${image.thumbnail.lqip})`,
+          aspectRatio: `${image.thumbnail.width}/${image.thumbnail.height}`
+        }}
       />
       <div className="image-card-middle">
         <div className="image-card-maininfo">
