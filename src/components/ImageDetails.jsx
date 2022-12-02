@@ -9,8 +9,12 @@ const ImageDetails = ({ selectedImage, onClose }) => {
         <div id="single-card-img-container">
           <img
             id="single-card-img-img"
-            src={`https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/300,/0/default.jpg`}
+            src={`https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/800,/0/default.jpg`}
             alt={selectedImage.title}
+            style={{
+              backgroundImage:`url(https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/300,/0/default.jpg)`,
+              aspectRatio: `${selectedImage.thumbnail.width}/${selectedImage.thumbnail.height}`
+            }}
           />
         </div>
         <div id="single-card-text-container">

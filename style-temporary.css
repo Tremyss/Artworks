@@ -345,6 +345,9 @@ body {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #single-card-text-container {
