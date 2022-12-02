@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import "./App.css"
 // Import functions
 import getData from "./api/GetData.js"
-import getDataLoop from "./api/GetDataLoop.js"
-import urlAssembler from "./api/urlAssembler.js"
 // Import components
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
@@ -16,30 +14,24 @@ function App() {
   // ! STATES
   // App state
   const [images, setImages] = useState([])
-  // Search API URL state
-  const [apiSearchUrl, setApiSearchUrl] = useState("https://collectionapi.metmuseum.org/public/collection/v1/search?q=van%20gogh&hasImages=true&isHighlight=true")
+  
   // Search input states
-  const [inputVal, setInputVal] = useState("")
-  const [searchHighlighted, setSearchHighlighted] = useState(false)
-  const [searchTitle, setSearchTitle] = useState(false)
+  const [searchVal, setSearchVal] = useState("")
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null);
 
-  console.log(images)
-  
 
 
-  // ! INIT FUNCTIONS
   // Call Fetch function and set App state
-  const initPage = async () => {
-    const results = await getData()
+  const loadData = async () => {
+    const results = await getData(searchVal)
+    console.log(results)
     setImages(results)
   }
 
-  // Kick in window:onLoad
   useEffect(() => {
-    initPage()
-  }, [])
+    loadData()
+  }, [searchVal])
 
 
   // ! UTIL FUNCTIONS
@@ -50,7 +42,7 @@ function App() {
 
   // Search handlers
   const onSearch = (search) => {
-    setInputVal(search)
+    setSearchVal(search)
   }
 
 
@@ -59,10 +51,6 @@ function App() {
       <nav>
         <Navbar
           onSearch={onSearch}
-          searchTitle={searchTitle}
-          searchHighlighted={searchHighlighted}
-          onClickHighlight={setSearchHighlighted}
-          onClickTitle={setSearchTitle}
         />
       </nav>
 
