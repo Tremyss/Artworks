@@ -5,7 +5,8 @@ const getData = async () => {
     try {
         const responseJson = await fetch(apiUrl)
         const responseObject = await responseJson.json();
-        return responseObject.data
+
+        return responseObject.data.filter(image => image.image_id)
     }
     catch (error) {
         console.error(error)
