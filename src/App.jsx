@@ -43,7 +43,8 @@ function App() {
 
   // Search handlers
   const onSearch = (search) => {
-    setSearchVal(search)
+    setSearchVal(search);
+    window.scrollTo(0, window.innerHeight);
   }
 
 

@@ -8,7 +8,7 @@ const Navbar = ({ onSearch }) => {
           <a href="#top">Home</a>
         </li>
         <li className="nav-item">
-          <a href="#top">Collection</a>
+          <a href="#image-grid">Collection</a>
         </li>
         <li className="nav-item">
           <a href="#top">Logo</a>
