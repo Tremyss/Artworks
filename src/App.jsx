@@ -44,6 +44,7 @@ function App() {
   // Search handlers
   const onSearch = (search) => {
     setSearchVal(search);
+    setImages([]);
     window.scrollTo(0, window.innerHeight);
   }
 

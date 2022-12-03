@@ -166,6 +166,7 @@ body {
 #image-grid {
   z-index: 1;
   width: 100%;
+  min-height: 100vh;
   padding: 7.5rem 2rem 2rem;
   display: flex;
   flex-wrap: wrap;
