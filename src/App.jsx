@@ -6,6 +6,7 @@ import getData from "./api/GetData.js"
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
 import ImageDetails from "./components/ImageDetails.jsx"
+import LandingPage from "./components/LandingPage.jsx"
 
 
 
@@ -48,16 +49,14 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
         <Navbar
           onSearch={onSearch}
         />
-      </nav>
-
       <main>
         <div id="background">
           <div id="mainframe">
           <div className="noise"></div>
+          <LandingPage/>
             <div id="image-grid">
               {images.length === 0 ?
                 <p className="image-card-title">Loading...</p> :

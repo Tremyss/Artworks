@@ -20,8 +20,7 @@ body {
 }
 
 .App {
-  display: flex;
-  justify-content: center;
+
   overflow: hidden;
 }
 
@@ -144,8 +143,8 @@ body {
   position: relative;
   background-color: var(--primary);
   width: 90%;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .noise {
@@ -166,7 +165,7 @@ body {
 
 #image-grid {
   z-index: 1;
-  width: 95%;
+  width: 100%;
   padding: 7.5rem 2rem 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -417,3 +416,26 @@ body {
 }
 
 /* ! END OF IMAGEDETAILS SECTION */
+
+
+#LandingPage{
+  background-image: url(./public/images/background-n-5846-00-000011-hd.jpg);
+  height: 100vh;
+  width: 90vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+#LandingPage-container{
+  height: 100vh;
+  width: 90vw;
+  padding: 30rem 10rem;
+  
+}
+
+#LandingPage-text{
+  color: var(--tertiary);
+  font-size: 4rem;
+  font-weight: 700;
+}

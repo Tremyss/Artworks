@@ -15,7 +15,7 @@ function ImageCard({ image, onShowDetails }) {
           <p className="image-card-title">{image.title}</p>
           <p className="image-card-author">{image.artist_title}</p>
         </div>
-        <div class="image-card-buttons">
+        <div className="image-card-buttons">
           <div className="tooltip">
           <span className="tooltiptext">
             download
