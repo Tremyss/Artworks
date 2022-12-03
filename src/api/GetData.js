@@ -1,6 +1,6 @@
 const getData = async (searchVal) => {
 
-    const apiUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchVal}&fields=id,title,artist_display,date_display,image_id,thumbnail,artwork_type_title,style_title`
+    const apiUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchVal}&fields=id,title,artist_title,artist_display,date_display,image_id,thumbnail,artwork_type_title,style_title`
 
     try {
         const responseJson = await fetch(apiUrl)

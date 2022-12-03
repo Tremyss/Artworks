@@ -374,7 +374,7 @@ body {
 #single-card-details-container {
   /* background-color: aqua; */
   /* padding-left: 2rem; */
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 #single-card-details-text-container {
@@ -387,19 +387,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;  
-  margin-top: 3rem;
+  justify-content: flex-start;
+  margin: 6rem 0;
 }
 
 .single-card-button {
   display: flex;
   height: 3rem;
   width: 3rem;
-  align-self: flex-end;
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .image-card-details-btn {
