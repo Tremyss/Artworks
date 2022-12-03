@@ -12,7 +12,7 @@ const ImageDetails = ({ selectedImage, onClose }) => {
             src={`https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/800,/0/default.jpg`}
             alt={selectedImage.title}
             style={{
-              backgroundImage:`url(https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/300,/0/default.jpg)`,
+              backgroundImage: `url(https://www.artic.edu/iiif/2/${selectedImage.image_id}/full/300,/0/default.jpg)`,
               aspectRatio: `${selectedImage.thumbnail.width}/${selectedImage.thumbnail.height}`
             }}
           />
@@ -27,12 +27,14 @@ const ImageDetails = ({ selectedImage, onClose }) => {
               <span className="single-card-title-span">Artist: </span>
               {selectedImage.artist_display}
             </p>
+            <p id="single-card-classification">
+              <span className="single-card-title-span">Classification: </span>
+              {selectedImage.artwork_type_title}
+            </p>
           </div>
           <div id="single-card-details-container">
             <div id="single-card-details-text-container">
-              <p className="single-card-details-text">
-                {selectedImage.artwork_type_title}
-              </p>
+             
               <p className="single-card-details-text">
                 {selectedImage.date_display}
               </p>
@@ -41,16 +43,14 @@ const ImageDetails = ({ selectedImage, onClose }) => {
               </p>
             </div>
             <div id="single-card-button-container">
-              <button className="single-card-button">
-                <a href={selectedImage.objectURL} target="_blank">
-                  <span className="material-symbols-outlined">Info</span>
-                  More info
-                </a>
-              </button>
-              <button className="single-card-button">
-                <span className="material-symbols-outlined">download</span>
-                More info
-              </button>
+              <div className="tooltip">
+                <span className="tooltiptext">
+                  download
+                </span>
+                <button className="single-card-button">
+                  <span className="material-symbols-outlined">download</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
