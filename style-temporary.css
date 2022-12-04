@@ -99,7 +99,7 @@ body {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  max-width: 120px;
+  max-width: 180px;
   background-color: var(--accent);
   color: var(--primary);
   text-align: center;
