@@ -6,7 +6,7 @@ const Navbar = ({ onSearch }) => {
       <ul className="nav-list">
         <li className="nav-item">
           {/* <a href="#top"> */}
-          <img src="public/atrwork_gallery_logo.png" alt="Artwork Gallery logo" />
+          <img src="/atrwork_gallery_logo.png" alt="Artwork Gallery logo" />
             {/* </a> */}
         </li>
         <li className="nav-item">
