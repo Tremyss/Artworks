@@ -20,18 +20,19 @@ function App() {
   // Search input states
   const [searchVal, setSearchVal] = useState("")
   // ImageDetails - Single Image Card state
-  const [selectedImageId, setSelectedImageId] = useState(null);
+  const [selectedImageId, setSelectedImageId] = useState(null)
+  const [page, setPage] = useState(1)
 
 
   // ! START: On Window Load - set App state
   const loadData = async () => {
-    const results = await getData(searchVal)
+    const results = await getData(searchVal, page)
     setImages(results)
   }
 
   useEffect(() => {
     loadData()
-  }, [searchVal])
+  }, [searchVal, page])
 
 
   // ! UTIL FUNCTIONS
@@ -60,7 +61,6 @@ function App() {
       <main>
         <div id="background">
           <div id="mainframe">
-            <div className="noise"></div>
             <LandingPage />
             <div id="image-grid">
               {images.length === 0 ?
@@ -74,7 +74,11 @@ function App() {
                   />
                 ))}
             </div>
+            <button id="show-more-button"
+                onClick={() => setPage(page + 1)}
+              >Show more</button>
           </div>
+          
           {selectedImageId !== null &&
             <ImageDetails
               selectedImage={selectedImage}

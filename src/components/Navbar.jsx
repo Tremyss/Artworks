@@ -27,7 +27,8 @@ const Navbar = ({ onSearch }) => {
               id="search-api"
               placeholder="search"
               spellCheck="false"
-              onKeyDown={(event) => { if (event.key === "Enter") { 
+              onKeyDown={(event) => {
+                if (event.key === "Enter") { 
                 onSearch(event.target.value)
                 // document.getElementById("image-grid").scrollIntoView();
               } }}
