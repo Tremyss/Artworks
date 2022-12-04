@@ -7,11 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+Artworks_Teams.pdf
 node_modules
 dist
 dist-ssr
 *.local
 .vscode
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
