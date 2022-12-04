@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react"
+// Import stylesheet - Temporary sheet used yet
 import "./App.css"
+// Import Node modules
+import { useEffect, useState } from "react"
+import { saveAs } from "file-saver"
 // Import functions
 import getData from "./api/GetData.js"
 // Import components
@@ -9,21 +12,18 @@ import ImageDetails from "./components/ImageDetails.jsx"
 import LandingPage from "./components/LandingPage.jsx"
 
 
-
 function App() {
 
   // ! STATES
   // App state
   const [images, setImages] = useState([])
-  
   // Search input states
   const [searchVal, setSearchVal] = useState("")
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null);
 
 
-
-  // Call Fetch function and set App state
+  // ! START: On Window Load - set App state
   const loadData = async () => {
     const results = await getData(searchVal)
     console.log(results)
@@ -36,12 +36,16 @@ function App() {
 
 
   // ! UTIL FUNCTIONS
-  // Select image to render more details
+  // Show more handler: Select image to render more details
   const selectedImage = images.find(img => img.id === selectedImageId)
 
   // Download handler
+  const downloadImage = (imgId) => {
+    console.log(imgId)
+    saveAs(`https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`, `${imgId}.jpg`)
+  }
 
-  // Search handlers
+  // Search handler
   const onSearch = (search) => {
     setSearchVal(search);
     setImages([]);
@@ -51,14 +55,14 @@ function App() {
 
   return (
     <div className="App">
-        <Navbar
-          onSearch={onSearch}
-        />
+      <Navbar
+        onSearch={onSearch}
+      />
       <main>
         <div id="background">
           <div id="mainframe">
-          <div className="noise"></div>
-          <LandingPage/>
+            <div className="noise"></div>
+            <LandingPage />
             <div id="image-grid">
               {images.length === 0 ?
                 <p className="image-card-title">Loading...</p> :
@@ -66,6 +70,7 @@ function App() {
                   <ImageCard
                     key={image.id}
                     image={image}
+                    onDownloadImage={imgId => downloadImage(imgId)}
                     onShowDetails={id => setSelectedImageId(id)}
                   />
                 ))}

@@ -123,7 +123,7 @@ body {
   opacity: 1;
 }
 
-/*END OF NAVBAR SECTION*/
+/* ! END OF NAVBAR SECTION*/
 
 /* ? START OF SLIDER SECTION */
 /* Döntsük el és alakítsuk ki később pls */
@@ -418,6 +418,7 @@ body {
 
 /* ! END OF IMAGEDETAILS SECTION */
 
+/* ? START OF IMAGEDETAILS SECTION */
 
 #LandingPage{
   background-image: url(./images/background-n-5846-00-000011-hd.jpg);
@@ -425,18 +426,24 @@ body {
   width: 90vw;
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 #LandingPage-container{
   height: 100vh;
   width: 90vw;
-  padding: 30rem 10rem;
-  
+  padding: 15rem 10rem;
 }
 
-#LandingPage-text{
+#LandingPage-text-main{
   color: var(--tertiary);
-  font-size: 4rem;
+  font-size: 10rem;
   font-weight: 700;
 }
+
+#LandingPage-text-secondary{
+  color: var(--tertiary);
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+/* ! END OF IMAGEDETAILS SECTION */

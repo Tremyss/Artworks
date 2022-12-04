@@ -24,7 +24,11 @@ const Navbar = ({ onSearch }) => {
               name="search-api"
               id="search-api"
               placeholder="search"
-              onKeyDown={(event) => { if (event.key === "Enter") { onSearch(event.target.value) } }}
+              spellCheck="false"
+              onKeyDown={(event) => { if (event.key === "Enter") { 
+                onSearch(event.target.value)
+                document.getElementById("image-grid").scrollIntoView();
+              } }}
             />
             <span className="tooltiptext">
               Search among Art Institue of Chicago's artworks:

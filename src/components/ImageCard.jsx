@@ -1,4 +1,6 @@
-function ImageCard({ image, onShowDetails }) {
+// import DownloadButton from "./DownloadButton.jsx"
+
+function ImageCard({ image, onDownloadImage, onShowDetails }) {
   return (
     <div className="image-card">
       <img
@@ -17,26 +19,22 @@ function ImageCard({ image, onShowDetails }) {
         </div>
         <div className="image-card-buttons">
           <div className="tooltip">
-          <span className="tooltiptext">
-            download
-          </span>
-          <button className="image-card-download-button">
-            <span className="material-symbols-outlined">download</span>
-          </button>
+            <span className="tooltiptext">
+              download
+            </span>
+            <button className="image-card-download-button" onClick={() => onDownloadImage(image.image_id)}>
+              <span className="material-symbols-outlined">download</span>
+            </button>
+          </div>
+          <div className="tooltip">
+            <span className="tooltiptext">
+              more info
+            </span>
+            <button className="image-card-details-btn" onClick={() => onShowDetails(image.id)}>
+              <span className="material-symbols-outlined">info</span>
+            </button>
+          </div>
         </div>
-        <div className="tooltip">
-          <span className="tooltiptext">
-            more info
-          </span>
-          <button className="image-card-details-btn"
-            onClick={() => onShowDetails(image.id)}
-          >
-            <span className="material-symbols-outlined">info</span>
-          </button>
-        </div>
-        
-        </div>
-
       </div>
     </div>
   )
