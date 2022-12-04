@@ -24,8 +24,8 @@ body {
   overflow: hidden;
 }
 
-/* ! COLOR THEMES */
 
+/* ? COLOR THEMES */
 :root {
   --primary: #3d332a;
   --secondary: #4a3e34;
@@ -34,8 +34,8 @@ body {
   --accent: #f5dec3;
 }
 
-/* ? START OF NAVBAR SECTION */
 
+/* ? START OF NAVBAR SECTION */
 .nav-bar {
   z-index: 99;
   background-color: var(--primary);
@@ -112,7 +112,6 @@ body {
   left: 50%;
   margin-left: -30px;
   margin-top: 10px;
-
   /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
   opacity: 0;
   transition: opacity 1s;
@@ -122,15 +121,44 @@ body {
   visibility: visible;
   opacity: 1;
 }
-
 /* ! END OF NAVBAR SECTION*/
+
+
+/* ? START OF LANDING PAGE SECTION */
+#LandingPage {
+  background-image: url(./images/background-n-5846-00-000011-hd.jpg);
+  height: 100vh;
+  width: 90vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#LandingPage-container {
+  height: 100vh;
+  width: 90vw;
+  padding: 15rem 10rem;
+}
+
+#LandingPage-text-main {
+  color: var(--tertiary);
+  font-size: 11rem;
+  font-weight: 700;
+}
+
+#LandingPage-text-secondary {
+  color: var(--tertiary);
+  font-size: 4rem;
+  font-weight: 500;
+}
+/* ! END OF LANDING PAGE SECTION */
+
 
 /* ? START OF SLIDER SECTION */
 /* Döntsük el és alakítsuk ki később pls */
 /* ! END OF SLIDER SECTION */
 
-/* ? START OF BACKGROUND SECTION */
 
+/* ? START OF BACKGROUND SECTION */
 #background {
   background-color: var(--secondary);
   min-height: 100vh;
@@ -155,14 +183,12 @@ body {
   background: linear-gradient(to bottom right, #3d332a, #4a3e3400),
     url("src/assets/grain-wall-pattern.svg");
   background-repeat: repeat;
-  filter: contrast(70%) brightness(80%) invert(5%) opacity(15%) sepia(60%)
-    saturate(50%) contrast(110%);
+  filter: contrast(70%) brightness(80%) invert(5%) opacity(15%) sepia(60%) saturate(50%) contrast(110%);
 }
-
 /* ! END OF BACKGROUND SECTION */
 
-/* ? START OF IMAGE GRID SECTION */
 
+/* ? START OF IMAGE GRID SECTION */
 #image-grid {
   z-index: 1;
   width: 100%;
@@ -188,12 +214,13 @@ body {
   row-gap: 0.5rem;
 }
 
-.image-card img {
+.image-card-image {
   position: relative;
   width: 100%;
   margin-bottom: 1rem;
   background-size: cover;
   background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   /* margin-bottom: auto; */
 }
 
@@ -228,12 +255,18 @@ body {
   font-size: 1.7rem;
 }
 
-.image-card-download-button {
+.image-card-buttons {
+  display: flex;
+}
+
+.image-card-download-button,
+.image-card-details-button {
   background-color: var(--accent);
   border-radius: 3px;
   height: 2.5rem;
   width: 2.5rem;
   margin: 0 0.5rem;
+  padding: 1.3rem;
   align-self: flex-end;
   justify-self: center;
   display: flex;
@@ -248,23 +281,15 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
-.image-card-text-holder {
-  width: 100%;
+.image-card-details-button:hover {
+  cursor: pointer;
+  box-shadow: var(--accent) 0px 1px 3px 0px,
+    rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
-
-.image-card-image {
-  background-color: rgb(80, 57, 80);
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-}
-
-.image-card-buttons{
-  display: flex;
-}
-
 /* ! END OF IMAGE GRID SECTION */
 
-/* ? START OF MEDIA QUERY SECTION */
 
+/* ? START OF MEDIA QUERY SECTION */
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
 /* * tablet nézet: */
 @media screen and (max-width: 1000px) {
@@ -288,11 +313,10 @@ body {
     width: 100%;
   }
 }
-
 /* ! END OF MEDIA QUERY SECTION */
 
-/* ? START OF IMAGEDETAILS (Single Card) SECTION */
 
+/* ? START OF IMAGEDETAILS (Single Card) SECTION */
 #single-card-blur {
   background-color: rgba(61, 51, 42, 0.75);
   width: 100%;
@@ -355,7 +379,7 @@ body {
   color: var(--primary);
   font-size: 1.8rem;
   font-weight: 600;
-  letter-spacing: 0.4rem;
+  letter-spacing: 0.1rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -391,18 +415,13 @@ body {
   margin: 6rem 0;
 }
 
-.single-card-button {
-  display: flex;
-  height: 3rem;
-  width: 3rem;
-}
-
-.image-card-details-btn {
+.single-card-download-button {
   background-color: var(--accent);
   border-radius: 3px;
   height: 2.5rem;
   width: 2.5rem;
   margin: 0 0.5rem;
+  padding: 1.3rem;
   align-self: flex-end;
   justify-self: center;
   display: flex;
@@ -410,40 +429,10 @@ body {
   align-items: center;
 }
 
-.image-card-details-btn:hover{
+.single-card-download-button:hover {
   cursor: pointer;
+  /* https://getcssscan.com/css-box-shadow-examples #36 */
   box-shadow: var(--accent) 0px 1px 3px 0px,
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
-
-/* ! END OF IMAGEDETAILS SECTION */
-
-/* ? START OF IMAGEDETAILS SECTION */
-
-#LandingPage{
-  background-image: url(./images/background-n-5846-00-000011-hd.jpg);
-  height: 100vh;
-  width: 90vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#LandingPage-container{
-  height: 100vh;
-  width: 90vw;
-  padding: 15rem 10rem;
-}
-
-#LandingPage-text-main{
-  color: var(--tertiary);
-  font-size: 10rem;
-  font-weight: 700;
-}
-
-#LandingPage-text-secondary{
-  color: var(--tertiary);
-  font-size: 4rem;
-  font-weight: 500;
-}
-
-/* ! END OF IMAGEDETAILS SECTION */
+/* ! END OF IMAGEDETAILS (Single Card) SECTION */

@@ -1,4 +1,4 @@
-const ImageDetails = ({ selectedImage, onClose }) => {
+const ImageDetails = ({ selectedImage, onDownloadImage, onClose }) => {
   console.log(selectedImage)
   return (
     <div id="single-card-blur">
@@ -34,7 +34,6 @@ const ImageDetails = ({ selectedImage, onClose }) => {
           </div>
           <div id="single-card-details-container">
             <div id="single-card-details-text-container">
-             
               <p className="single-card-details-text">
                 {selectedImage.date_display}
               </p>
@@ -47,7 +46,7 @@ const ImageDetails = ({ selectedImage, onClose }) => {
                 <span className="tooltiptext">
                   download
                 </span>
-                <button className="single-card-button">
+                <button className="single-card-download-button" onClick={() => onDownloadImage(selectedImage.image_id)}>
                   <span className="material-symbols-outlined">download</span>
                 </button>
               </div>

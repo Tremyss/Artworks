@@ -1,4 +1,4 @@
-// Import stylesheet - Temporary sheet used yet
+// Import stylesheet - Temporary sheet used yet !!!!!!!!
 import "./App.css"
 // Import Node modules
 import { useEffect, useState } from "react"
@@ -26,7 +26,6 @@ function App() {
   // ! START: On Window Load - set App state
   const loadData = async () => {
     const results = await getData(searchVal)
-    console.log(results)
     setImages(results)
   }
 
@@ -79,10 +78,10 @@ function App() {
           {selectedImageId !== null &&
             <ImageDetails
               selectedImage={selectedImage}
+              onDownloadImage={imgId => downloadImage(imgId)}
               onClose={() => setSelectedImageId(null)} />}
         </div>
       </main>
-
     </div>
   )
 }

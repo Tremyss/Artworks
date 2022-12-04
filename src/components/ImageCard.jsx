@@ -1,5 +1,3 @@
-// import DownloadButton from "./DownloadButton.jsx"
-
 function ImageCard({ image, onDownloadImage, onShowDetails }) {
   return (
     <div className="image-card">
@@ -30,7 +28,7 @@ function ImageCard({ image, onDownloadImage, onShowDetails }) {
             <span className="tooltiptext">
               more info
             </span>
-            <button className="image-card-details-btn" onClick={() => onShowDetails(image.id)}>
+            <button className="image-card-details-button" onClick={() => onShowDetails(image.id)}>
               <span className="material-symbols-outlined">info</span>
             </button>
           </div>
