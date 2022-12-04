@@ -20,7 +20,6 @@ body {
 }
 
 .App {
-
   overflow: hidden;
 }
 
@@ -57,7 +56,7 @@ body {
 }
 
 .nav-item {
-  width: 14.5rem;
+  width: 10.5rem;
 }
 
 .nav-item:last-child {
@@ -79,6 +78,17 @@ body {
 .nav-item a:hover {
   background-color: var(--accent);
   color: var(--primary);
+}
+
+.nav-item:first-child {
+  border-right: none;
+  width: 7.5rem;
+}
+
+.nav-list img {
+  width: 3.5rem;
+  position: relative;
+  transform: translateY(3px)
 }
 
 .search-input {
@@ -121,6 +131,7 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
 /* ! END OF NAVBAR SECTION*/
 
 
@@ -150,6 +161,7 @@ body {
   font-size: 4rem;
   font-weight: 500;
 }
+
 /* ! END OF LANDING PAGE SECTION */
 
 
@@ -185,6 +197,7 @@ body {
   background-repeat: repeat;
   filter: contrast(70%) brightness(80%) invert(5%) opacity(15%) sepia(60%) saturate(50%) contrast(110%);
 }
+
 /* ! END OF BACKGROUND SECTION */
 
 
@@ -286,6 +299,7 @@ body {
   box-shadow: var(--accent) 0px 1px 3px 0px,
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
+
 /* ! END OF IMAGE GRID SECTION */
 
 
@@ -313,6 +327,7 @@ body {
     width: 100%;
   }
 }
+
 /* ! END OF MEDIA QUERY SECTION */
 
 
@@ -435,4 +450,5 @@ body {
   box-shadow: var(--accent) 0px 1px 3px 0px,
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
+
 /* ! END OF IMAGEDETAILS (Single Card) SECTION */

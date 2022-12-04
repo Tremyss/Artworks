@@ -5,13 +5,15 @@ const Navbar = ({ onSearch }) => {
     <div className="nav-bar">
       <ul className="nav-list">
         <li className="nav-item">
+          {/* <a href="#top"> */}
+          <img src="public/atrwork_gallery_logo.png" alt="Artwork Gallery logo" />
+            {/* </a> */}
+        </li>
+        <li className="nav-item">
           <a href="#top">Home</a>
         </li>
         <li className="nav-item">
           <a href="#image-grid">Collection</a>
-        </li>
-        <li className="nav-item">
-          <a href="#top">Logo</a>
         </li>
         <li className="nav-item">
           <a href="#top">Login</a>
@@ -27,7 +29,7 @@ const Navbar = ({ onSearch }) => {
               spellCheck="false"
               onKeyDown={(event) => { if (event.key === "Enter") { 
                 onSearch(event.target.value)
-                document.getElementById("image-grid").scrollIntoView();
+                // document.getElementById("image-grid").scrollIntoView();
               } }}
             />
             <span className="tooltiptext">
