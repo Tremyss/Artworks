@@ -64,7 +64,7 @@ function App() {
             <LandingPage />
             <div id="image-grid">
               {images.length === 0 ?
-                <p className="image-card-title">Loading...</p> :
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
                 images.map(image => (
                   <ImageCard
                     key={image.id}
