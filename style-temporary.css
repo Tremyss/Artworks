@@ -19,6 +19,16 @@ body {
   /* padding-bottom: 2rem; */
 }
 
+::-webkit-scrollbar {
+  background-color: var(--secondary);
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary);
+}
+
+
 .App {
   overflow: hidden;
 }
