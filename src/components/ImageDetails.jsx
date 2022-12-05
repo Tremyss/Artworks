@@ -40,7 +40,12 @@ const ImageDetails = ({ selectedImage, onDownloadImage, onClose }) => {
               <p className="single-card-details-text">
                 {selectedImage.style_title}
               </p>
+              <a href={`https://www.artic.edu/artworks/${selectedImage.id}`}
+              target="_blank"
+              id="single-card-link"
+            >Visit Art Institute of Chicago for more details</a>
             </div>
+           
             <div id="single-card-button-container">
               <div className="tooltip">
                 <span className="tooltiptext">
@@ -49,9 +54,6 @@ const ImageDetails = ({ selectedImage, onDownloadImage, onClose }) => {
                 <button className="single-card-download-button" onClick={() => onDownloadImage(selectedImage.image_id)}>
                   <span className="material-symbols-outlined">download</span>
                 </button>
-                <a href={`https://www.artic.edu/artworks/${selectedImage.image_id}`} 
-                  target="_blank"
-                  >link</a>
               </div>
             </div>
           </div>

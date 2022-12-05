@@ -449,6 +449,11 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
+#single-card-link {
+  color: var(--secondary);
+  margin-top: 20px;
+}
+
 /* ! END OF IMAGEDETAILS (Single Card) SECTION */
 
 
