@@ -12,7 +12,7 @@ function ImageCard({ image, onDownloadImage, onShowDetails }) {
       />
       <div className="image-card-middle">
         <div className="image-card-maininfo">
-          <p className="image-card-title">{image.title}</p>
+          <p className="image-card-title">{image.title.length<35?image.title:`${image.title.slice(0,35)}....`}</p>
           <p className="image-card-author">{image.artist_title}</p>
         </div>
         <div className="image-card-buttons">
