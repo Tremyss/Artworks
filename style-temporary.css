@@ -70,11 +70,12 @@ body {
 }
 
 .nav-item {
-  width: 10.5rem;
+  max-width: 10.5rem;
 }
 
 .nav-item:last-child {
   margin-left: auto;
+  margin-right: 8rem;
   border-right: none;
   width: 20rem;
 }
@@ -164,15 +165,18 @@ body {
 }
 
 #LandingPage-text-main {
-  color: var(--tertiary);
+  color: var(--primary);
   font-size: 11rem;
   font-weight: 700;
+  /* text-overflow: ellipsis;
+  white-space: nowrap; */
 }
 
 #LandingPage-text-secondary {
-  color: var(--tertiary);
+  color: var(--secondary);
   font-size: 4rem;
   font-weight: 500;
+  font-style: italic;
 }
 
 /* ! END OF LANDING PAGE SECTION */
@@ -316,6 +320,47 @@ body {
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
 /* * tablet nézet: */
 @media screen and (max-width: 1000px) {
+  .nav-item {
+    max-width: 14rem;
+  }
+
+  .nav-item a {
+    font-size: 2.1rem;
+  }
+  .search-input {
+    font-size: 1.8rem;
+  }
+
+  .nav-item:first-child {
+    width: 5rem;
+  }
+
+  .nav-item:last-child {
+    margin-right: 13rem;
+    width: 10rem;
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  #LandingPage {
+    background-position: center;
+  }
+
+  #LandingPage-container {
+    padding: 10rem 4rem;
+  }
+
+  #LandingPage-text-main {
+    font-size: 7rem;
+    /* text-align: center; */
+    margin: 1rem 0;
+  }
+
+  #LandingPage-text-secondary {
+    font-size: 3.8rem;
+    /* text-align: center; */
+  }
+
   .image-card {
     width: 45%;
   }
@@ -328,8 +373,46 @@ body {
   }
 
   .nav-item a {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding: 1.2rem 0.8rem;
+  }
+
+  .search-input {
+    font-size: 1.2rem;
+    width: 10rem;
+  }
+
+  .nav-item:first-child {
+    width: 3.5rem;
+  }
+
+  .nav-item:first-child img {
+    width: 2.5rem;
+  }
+
+  .nav-item:last-child {
+    margin-right: 5rem;
+    width: 5rem;
+    padding: 0.5rem;
+  }
+
+  #LandingPage {
+    background-position: center;
+  }
+
+  #LandingPage-container {
+    padding: 8rem 1.5rem;
+  }
+
+  #LandingPage-text-main {
+    font-size: 4rem;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  #LandingPage-text-secondary {
+    font-size: 2.2rem;
+    text-align: center;
   }
 
   .image-card {
