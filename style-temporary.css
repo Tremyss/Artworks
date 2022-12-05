@@ -23,16 +23,30 @@ body {
   overflow: hidden;
 }
 
-
 /* ? COLOR THEMES */
-:root {
+/* :root {
   --primary: #3d332a;
   --secondary: #4a3e34;
   --tertiary: #9a8a78;
   --key: #ffb119;
   --accent: #f5dec3;
-}
+} */
 
+/* :root {
+  --primary: hsl(28, 18%, 20%);
+  --secondary: hsl(27, 17%, 25%);
+  --tertiary: hsl(34, 14%, 54%);
+  --key: hsl(40, 100%, 55%);
+  --accent: hsl(32, 71%, 86%);
+} */
+
+:root {
+  --primary: #33261a;
+  --secondary: #4d3d2e;
+  --tertiary: #99826b;
+  --key: #ffb119;
+  --accent: #ffeecc;
+}
 
 /* ? START OF NAVBAR SECTION */
 .nav-bar {
@@ -88,7 +102,7 @@ body {
 .nav-list img {
   width: 3.5rem;
   position: relative;
-  transform: translateY(3px)
+  transform: translateY(3px);
 }
 
 .search-input {
@@ -133,7 +147,6 @@ body {
 
 /* ! END OF NAVBAR SECTION*/
 
-
 /* ? START OF LANDING PAGE SECTION */
 #LandingPage {
   background-image: url(./images/background-n-5846-00-000011-hd.jpg);
@@ -141,6 +154,7 @@ body {
   width: 90vw;
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 0.75;
 }
 
 #LandingPage-container {
@@ -163,11 +177,9 @@ body {
 
 /* ! END OF LANDING PAGE SECTION */
 
-
 /* ? START OF SLIDER SECTION */
 /* Döntsük el és alakítsuk ki később pls */
 /* ! END OF SLIDER SECTION */
-
 
 /* ? START OF BACKGROUND SECTION */
 #background {
@@ -182,12 +194,12 @@ body {
   position: relative;
   background-color: var(--primary);
   width: 90%;
-  background-image: url(./public/images/noise.jpg);
+  /* background-image: url(./public/images/noise.jpg); */
+  background-image: url(./public/images/grain-wall-pattern1000t.png);
   background-repeat: repeat;
 }
 
 /* ! END OF BACKGROUND SECTION */
-
 
 /* ? START OF IMAGE GRID SECTION */
 #image-grid {
@@ -289,7 +301,7 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
-#show-more-button{
+#show-more-button {
   display: block;
   margin: 20px auto;
   background-color: var(--accent);
@@ -299,7 +311,6 @@ body {
 }
 
 /* ! END OF IMAGE GRID SECTION */
-
 
 /* ? START OF MEDIA QUERY SECTION */
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
@@ -327,7 +338,6 @@ body {
 }
 
 /* ! END OF MEDIA QUERY SECTION */
-
 
 /* ? START OF IMAGEDETAILS (Single Card) SECTION */
 #single-card-blur {
