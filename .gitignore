@@ -9,8 +9,7 @@ lerna-debug.log*
 
 Artworks_Teams.pdf
 node_modules
-dist
-dist-ssr
+# dist-ssr
 *.local
 .vscode
 
