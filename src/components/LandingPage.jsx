@@ -1,4 +1,3 @@
-
 function LandingPage() {
     return (
         <div id="LandingPage">

@@ -1,5 +1,5 @@
 
-const Navbar = ({ onSearch }) => {
+const Navbar = ({ onSignup, onLogin, onSearch }) => {
 
   return (
     <div className="nav-bar">
@@ -15,9 +15,19 @@ const Navbar = ({ onSearch }) => {
         <li className="nav-item">
           <a href="#image-grid">Collection</a>
         </li>
+
+
         <li className="nav-item">
-          <a href="#top">Login</a>
+          <a href="#top" onClick={()=>onSignup(true)}>Signup</a>
         </li>
+
+
+        <li className="nav-item">
+          <a href="#top" onClick={()=>onLogin(true)}>Login</a>
+        </li>
+
+
+
         <li className="nav-item">
           <div className="tooltip">
             <input

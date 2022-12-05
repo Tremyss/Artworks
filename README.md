@@ -41,6 +41,7 @@ Széles Szilárd
 * Figma wireframe: https://www.figma.com/file/0AjDy2B2sFCIvU9PLQQmos/Art-Magazine-Schiele?node-id=0%3A1&t=o0Ksq8H6EQWgUVtR-0
 * Repository: https://github.com/HordodongA/artwork-schiele-frontend
 * Outer database: Art Institute of Chicago API https://api.artic.edu/docs/
+Backend API test results: https://docs.google.com/spreadsheets/d/1fcOjo7K6gMgKEK_GIq9q_k32mQRBZ9jr8cP5L7rZSM8/edit?usp=sharing
 
 
 # JOURNEY PROJECT

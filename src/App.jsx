@@ -10,6 +10,8 @@ import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
 import ImageDetails from "./components/ImageDetails.jsx"
 import LandingPage from "./components/LandingPage.jsx"
+import SignupModal from "./components/SignupModal.jsx"
+import LoginModal from "./components/LoginModal.jsx"
 
 
 function App() {
@@ -22,6 +24,10 @@ function App() {
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null)
   const [page, setPage] = useState(1)
+  // Login state for conditional rendering
+  const [isSignup, setIsSignup] = useState(false)
+  // Signup state for conditional rendering
+  const [isLogin, setIsLogin] = useState(false)
 
 
   // ! START: On Window Load - set App state
@@ -52,19 +58,29 @@ function App() {
     window.scrollTo(0, window.innerHeight);
   }
 
+  // * Backend IP: http://3.66.103.135:80
+  // Signup handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+
+  // Login handler + api request: /api/login Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+
 
   return (
     <div className="App">
+
       <Navbar
+        onSignup={setIsSignup}
+        onLogin={setIsLogin}
         onSearch={onSearch}
       />
+
       <main>
         <div id="background">
+
           <div id="mainframe">
             <LandingPage />
             <div id="image-grid">
               {images.length === 0 ?
-                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
+                <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
                 images.map(image => (
                   <ImageCard
                     key={image.id}
@@ -75,17 +91,31 @@ function App() {
                 ))}
             </div>
             <button id="show-more-button"
-                onClick={() => setPage(page + 1)}
-              >Show more</button>
+              onClick={() => setPage(page + 1)}
+            >Show more</button>
           </div>
-          
+
           {selectedImageId !== null &&
             <ImageDetails
               selectedImage={selectedImage}
               onDownloadImage={imgId => downloadImage(imgId)}
               onClose={() => setSelectedImageId(null)} />}
+
+          {isSignup &&
+            <SignupModal
+              onClose={setIsSignup}
+            // onSignup={ signupHandler fc }
+            />}
+
+          {isLogin &&
+            <LoginModal
+              onClose={setIsLogin}
+            // onLogin={ loginHandler fc }
+            />}
+
         </div>
       </main>
+
     </div>
   )
 }
