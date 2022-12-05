@@ -49,6 +49,9 @@ const ImageDetails = ({ selectedImage, onDownloadImage, onClose }) => {
                 <button className="single-card-download-button" onClick={() => onDownloadImage(selectedImage.image_id)}>
                   <span className="material-symbols-outlined">download</span>
                 </button>
+                <a href={`https://www.artic.edu/artworks/${selectedImage.image_id}`} 
+                  target="_blank"
+                  >link</a>
               </div>
             </div>
           </div>
