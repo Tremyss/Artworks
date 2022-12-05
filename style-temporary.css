@@ -318,14 +318,6 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
-#show-more-button {
-  display: block;
-  margin: 20px auto;
-  background-color: var(--accent);
-  border-radius: 3px;
-  padding: 0.5rem;
-  cursor: pointer;
-}
 
 /* ! END OF IMAGE GRID SECTION */
 
@@ -456,6 +448,30 @@ body {
 
 /* ! END OF IMAGEDETAILS (Single Card) SECTION */
 
+/* ? START OF PAGER SECTION */
+#pager-container{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+#pager-previous-button, 
+#pager-next-button
+{
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 0.3rem;
+}
+
+#pager-counter{
+  color: var(--accent);
+  font-size: 1.8rem;
+  margin: 2rem;
+}
+
+/* ! END OF IMAGEDETAILS (Single Card) SECTION */
 
 /* ? START OF SIGNUP/LOGIN SECTION */
 #login-card-background {

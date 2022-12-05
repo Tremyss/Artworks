@@ -1,5 +1,4 @@
 const getData = async (searchVal, page) => {
-    console.log(page)
     const apiUrl = `https://api.artic.edu/api/v1/artworks/search?
         q=${searchVal}
         &page=${page}
@@ -7,7 +6,7 @@ const getData = async (searchVal, page) => {
     try {
         const responseJson = await fetch(apiUrl)
         const responseObject = await responseJson.json()
-        return responseObject.data.filter(image => image.image_id)
+        return [responseObject.data.filter(image => image.image_id), responseObject.pagination.total_pages]
     }
     catch (error) {
         console.error(error)

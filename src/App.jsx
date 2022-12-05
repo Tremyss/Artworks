@@ -12,6 +12,7 @@ import ImageDetails from "./components/ImageDetails.jsx"
 import LandingPage from "./components/LandingPage.jsx"
 import SignupModal from "./components/SignupModal.jsx"
 import LoginModal from "./components/LoginModal.jsx"
+import Pager from "./components/Pager.jsx"
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
   const [searchVal, setSearchVal] = useState("")
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null)
+  // Pager states
   const [page, setPage] = useState(1)
+  const [totalPageCount, setTotalPageCount] = useState(null)
   // Login state for conditional rendering
   const [isSignup, setIsSignup] = useState(false)
   // Signup state for conditional rendering
@@ -32,8 +35,9 @@ function App() {
 
   // ! START: On Window Load - set App state
   const loadData = async () => {
-    const results = await getData(searchVal, page)
-    setImages(results)
+    const [images, totalPage] = await getData(searchVal, page)
+    setImages(images)
+    setTotalPageCount(totalPage)
   }
 
   useEffect(() => {
@@ -51,11 +55,16 @@ function App() {
     saveAs(`https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`, `${imgId}.jpg`)
   }
 
+  const onPageChange = (newPage) =>{
+    setPage(newPage)
+  }
+
   // Search handler
   const onSearch = (search) => {
-    setSearchVal(search);
-    setImages([]);
-    window.scrollTo(0, window.innerHeight);
+    setSearchVal(search)
+    setImages([])
+    setPage(1)
+    window.scrollTo(0, window.innerHeight)
   }
 
   // * Backend IP: http://3.66.103.135:80
@@ -77,7 +86,7 @@ function App() {
         <div id="background">
 
           <div id="mainframe">
-            <LandingPage />
+            <LandingPage/>
             <div id="image-grid">
               {images.length === 0 ?
                 <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
@@ -90,9 +99,10 @@ function App() {
                   />
                 ))}
             </div>
-            <button id="show-more-button"
-              onClick={() => setPage(page + 1)}
-            >Show more</button>
+            <Pager
+            page={page}
+            totalPageCount={totalPageCount}
+            onPageChange={onPageChange}/>
           </div>
 
           {selectedImageId !== null &&
