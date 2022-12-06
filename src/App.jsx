@@ -4,7 +4,8 @@ import "./App.css"
 import { useEffect, useState } from "react"
 import { saveAs } from "file-saver"
 // Import functions
-import getData from "./api/GetData.js"
+import getData from "./api/getData.js"
+import postUser from "./api/postUser.js"
 // Import components
 import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
@@ -15,10 +16,10 @@ import LoginModal from "./components/LoginModal.jsx"
 import Pager from "./components/Pager.jsx"
 
 // Set backend IP here
-const backendApi = "http://3.66.103.135:80"
+export const backendApi = "http://3.66.103.135:80"
 // Backend API's endpoints
-export const signupEndpoint = "/api/signup"
-export const loginEndpoint = "/api/login"
+const signupEndpoint = "/api/signup"
+const loginEndpoint = "/api/login"
 
 function App() {
 
@@ -77,46 +78,26 @@ function App() {
 
 
   // ! Backend IP: backendApi
-  // * Signup handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+  // Signup handler
   const signupHandler = async (email, password, endpoint) => {
-    const bodyOject = { email, password }
-    const url = backendApi + endpoint
-    try {
-      const response = await fetch(url, { method: "POST", body: JSON.stringify(bodyOject) })
-      if (response.status === 200) { 
-        alert("You are successfully signed up. Please log in page.") 
-        setIsSignup(false)
-      }
-      if (response.status === 409) { alert("This e-mail address is already registered to our system.") }
-      return response.status
+    const responseStatus = await postUser(email, password, endpoint)
+    if (responseStatus === 200) {
+      alert("You are successfully signed up. Please log in page.")
+      setIsSignup(false)
     }
-    catch (error) {
-      console.error(error)
-      return error
-    }
+    if (responseStatus === 409) { alert("This e-mail address is already registered to our system.") }
   }
 
-  // * Login handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+  // Login handler
   const loginHandler = async (email, password, endpoint) => {
-    const bodyOject = { email, password }
-    const url = backendApi + endpoint
-    console.log(url) // eddig jó
-    console.log(bodyOject) // eddig jó
-    console.log(JSON.stringify(bodyOject)) // eddig jó
-    try {
-      const response = await fetch(url, { method: "POST", body: JSON.stringify(bodyOject) })
-      if (response.status === 200) { 
-        alert("Welcome back!") 
-        // set isLoggedIn to true --> render user's page w/ component
-      }
-      if (response.status === 401) { alert("Wrong e-mail or password.") }
-      return response.status
+    const responseStatus = await postUser(email, password, endpoint)
+    if (responseStatus === 200) {
+      alert("Welcome back!")
+      // set isLoggedIn to true --> render user's page w/ component
     }
-    catch (error) {
-      console.error(error)
-      return error
-    }
+    if (responseStatus === 401) { alert("Wrong e-mail or password.") }
   }
+
 
 
 
@@ -159,7 +140,7 @@ function App() {
               onDownloadImage={imgId => downloadImage(imgId)}
               onClose={() => setSelectedImageId(null)} />}
 
-          {isSignup && 
+          {isSignup &&
             <SignupModal
               endpoint={signupEndpoint}
               onSignup={signupHandler}
