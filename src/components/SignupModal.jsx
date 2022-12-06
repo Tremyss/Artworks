@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { signupEndpoint } from "../App.jsx"
 
-const SignupModal = ({ onSignup, onClose }) => {
+const SignupModal = ({ endpoint, onSignup, onClose }) => {
 
     const [emailInput, setEmailInput] = useState("")
     const [passwordInput, setPasswordInput] = useState("")
@@ -38,7 +37,7 @@ const SignupModal = ({ onSignup, onClose }) => {
                     <div id="login-card-content-button-container" >
                         <button
                             className="login-card-button"
-                            onClick={() => onSignup(emailInput, passwordInput, signupEndpoint)}>
+                            onClick={() => onSignup(emailInput, passwordInput, endpoint)}>
                             Sign&nbsp;up
                             <span className="material-symbols-outlined">how_to_reg</span>
                         </button>

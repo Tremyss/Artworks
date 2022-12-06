@@ -7,7 +7,7 @@ const Navbar = ({ onSignup, onLogin, onSearch }) => {
         <li className="nav-item">
           {/* <a href="#top"> */}
           <img src="/atrwork_gallery_logo.png" alt="Artwork Gallery logo" />
-            {/* </a> */}
+          {/* </a> */}
         </li>
         <li className="nav-item">
           <a href="#top">Home</a>
@@ -15,19 +15,18 @@ const Navbar = ({ onSignup, onLogin, onSearch }) => {
         <li className="nav-item">
           <a href="#image-grid">Collection</a>
         </li>
-
-
         <li className="nav-item">
-          <a href="#top" onClick={()=>onSignup(true)}>Signup</a>
+          <a href="#top" onClick={() => {
+            onSignup(true)
+            onLogin(false)
+          }}>Signup</a>
         </li>
-
-
         <li className="nav-item">
-          <a href="#top" onClick={()=>onLogin(true)}>Login</a>
+          <a href="#top" onClick={() => {
+            onLogin(true)
+            onSignup(false)
+          }}>Login</a>
         </li>
-
-
-
         <li className="nav-item">
           <div className="tooltip">
             <input
@@ -38,10 +37,11 @@ const Navbar = ({ onSignup, onLogin, onSearch }) => {
               placeholder="search"
               spellCheck="false"
               onKeyDown={(event) => {
-                if (event.key === "Enter") { 
-                onSearch(event.target.value)
-                // document.getElementById("image-grid").scrollIntoView();
-              } }}
+                if (event.key === "Enter") {
+                  onSearch(event.target.value)
+                  // document.getElementById("image-grid").scrollIntoView();
+                }
+              }}
             />
             <span className="tooltiptext">
               Search among Art Institue of Chicago's artworks:

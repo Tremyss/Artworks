@@ -1,4 +1,9 @@
-const LoginModal = ({ onLogin, onClose }) => {
+import { useState } from "react"
+
+const LoginModal = ({ endpoint, onLogin, onClose }) => {
+
+    const [emailInput, setEmailInput] = useState("")
+    const [passwordInput, setPasswordInput] = useState("")
 
     return (
         <div id="login-card-blur">
@@ -11,11 +16,26 @@ const LoginModal = ({ onLogin, onClose }) => {
                         <p className="login-card-content-title-p">Login</p>
                     </div>
                     <div id="login-card-content-inputs-container" >
-                        <input type="email" className="login-card-content-input" name="email" placeholder="email" />
-                        <input type="password" className="login-card-content-input" name="password" placeholder="password" />
+                        <input type="email"
+                            className="login-card-content-input"
+                            name="email"
+                            placeholder="email"
+                            required
+                            value={emailInput}
+                            onChange={(event) => setEmailInput(event.target.value)}
+                        />
+                        <input
+                            type="password"
+                            className="login-card-content-input"
+                            name="password"
+                            placeholder="password"
+                            required
+                            value={passwordInput}
+                            onChange={(event) => setPasswordInput(event.target.value)}
+                        />
                     </div>
                     <div id="login-card-content-button-container" >
-                        <button className="login-card-button" onClick={onLogin}>
+                        <button className="login-card-button" onClick={() => onLogin(emailInput, passwordInput, endpoint)}>
                             Login
                             <span className="material-symbols-outlined">login</span>
                         </button>

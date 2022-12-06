@@ -81,13 +81,13 @@ function App() {
   const signupHandler = async (email, password, endpoint) => {
     const bodyOject = { email, password }
     const url = backendApi + endpoint
-    console.log(url) // eddig jó
-    console.log(bodyOject) // eddig jó
-    console.log(JSON.stringify(bodyOject)) // eddig jó
     try {
       const response = await fetch(url, { method: "POST", body: JSON.stringify(bodyOject) })
-      if (response.status === 200) {alert("You are successfully signed up. Please log in page.")}
-      if (response.status === 409) {alert("This e-mail address is already registered to our system.")}
+      if (response.status === 200) { 
+        alert("You are successfully signed up. Please log in page.") 
+        setIsSignup(false)
+      }
+      if (response.status === 409) { alert("This e-mail address is already registered to our system.") }
       return response.status
     }
     catch (error) {
@@ -97,8 +97,26 @@ function App() {
   }
 
   // * Login handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
-
-
+  const loginHandler = async (email, password, endpoint) => {
+    const bodyOject = { email, password }
+    const url = backendApi + endpoint
+    console.log(url) // eddig jó
+    console.log(bodyOject) // eddig jó
+    console.log(JSON.stringify(bodyOject)) // eddig jó
+    try {
+      const response = await fetch(url, { method: "POST", body: JSON.stringify(bodyOject) })
+      if (response.status === 200) { 
+        alert("Welcome back!") 
+        // set isLoggedIn to true --> render user's page w/ component
+      }
+      if (response.status === 401) { alert("Wrong e-mail or password.") }
+      return response.status
+    }
+    catch (error) {
+      console.error(error)
+      return error
+    }
+  }
 
 
 
@@ -141,16 +159,18 @@ function App() {
               onDownloadImage={imgId => downloadImage(imgId)}
               onClose={() => setSelectedImageId(null)} />}
 
-          {isSignup &&
+          {isSignup && 
             <SignupModal
-              onClose={setIsSignup}
+              endpoint={signupEndpoint}
               onSignup={signupHandler}
+              onClose={setIsSignup}
             />}
 
           {isLogin &&
             <LoginModal
+              endpoint={loginEndpoint}
+              onLogin={loginHandler}
               onClose={setIsLogin}
-            // onLogin={ loginHandler fc }
             />}
 
         </div>
