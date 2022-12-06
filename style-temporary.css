@@ -28,7 +28,6 @@ body {
   background-color: var(--tertiary);
 }
 
-
 .App {
   overflow: hidden;
 }
@@ -93,7 +92,7 @@ body {
 .nav-item a {
   display: block;
   color: var(--accent);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
   text-align: left;
   padding: 1rem 1rem;
@@ -107,7 +106,7 @@ body {
 
 .nav-item:first-child {
   border-right: none;
-  width: 7.5rem;
+  width: 5rem;
 }
 
 .nav-list img {
@@ -178,8 +177,8 @@ body {
   color: var(--primary);
   font-size: 11rem;
   font-weight: 700;
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #LandingPage-text-secondary {
@@ -187,15 +186,15 @@ body {
   font-size: 4rem;
   font-weight: 500;
   font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ! END OF LANDING PAGE SECTION */
 
-
 /* ? START OF SLIDER SECTION */
 /* Döntsük el és alakítsuk ki később pls */
 /* ! END OF SLIDER SECTION */
-
 
 /* ? START OF BACKGROUND SECTION */
 #background {
@@ -217,7 +216,6 @@ body {
 
 /* ! END OF BACKGROUND SECTION */
 
-
 /* ? START OF IMAGE GRID SECTION */
 #image-grid {
   width: 100%;
@@ -232,8 +230,7 @@ body {
 
 .image-card {
   /* border: solid 1px red; */
-  padding: 5px;
-  /* flex: 0 0 290px; */
+  padding: 0.5rem;
   width: 30%;
   text-align: center;
   display: flex;
@@ -246,17 +243,17 @@ body {
 .image-card-image {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 32rem;
   object-fit: contain;
   margin-bottom: 1rem;
   background-size: cover;
   background-repeat: no-repeat;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  /* margin-bottom: auto; */
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .image-card-middle {
-  /* background-color: aqua; */
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -273,7 +270,6 @@ body {
 }
 
 .image-card-title {
-  /* background-color: firebrick; */
   color: var(--key);
   text-align: left;
   font-weight: bolder;
@@ -318,9 +314,7 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
-
 /* ! END OF IMAGE GRID SECTION */
-
 
 /* ? START OF IMAGEDETAILS (Single Card) SECTION */
 #single-card-blur {
@@ -449,7 +443,7 @@ body {
 /* ! END OF IMAGEDETAILS (Single Card) SECTION */
 
 /* ? START OF PAGER SECTION */
-#pager-container{
+#pager-container {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -457,15 +451,14 @@ body {
   margin-bottom: 5rem;
 }
 
-#pager-previous-button, 
-#pager-next-button
-{
+#pager-previous-button,
+#pager-next-button {
   background-color: var(--accent);
   color: var(--primary);
   padding: 0.3rem;
 }
 
-#pager-counter{
+#pager-counter {
   color: var(--accent);
   font-size: 1.8rem;
   margin: 2rem;
@@ -578,7 +571,6 @@ body {
 
 /* ! END OF SIGNUP/LOGIN SECTION */
 
-
 /* ? START OF LOADING ANIMATION SECTION */
 .lds-ellipsis {
   display: inline-block;
@@ -649,32 +641,60 @@ body {
 
 /* ! END OF LOADING ANIMATION SECTION */
 
-
 /* ? START OF MEDIA QUERY SECTION */
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
+
 /* * tablet nézet: */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1250px) {
   .nav-item {
-    max-width: 14rem;
-  }
-
-  .nav-item a {
-    font-size: 2.1rem;
-  }
-
-  .search-input {
-    font-size: 1.8rem;
+    max-width: 16rem;
   }
 
   .nav-item:first-child {
-    width: 5rem;
+    width: 4.5rem;
   }
 
   .nav-item:last-child {
-    margin-right: 13rem;
-    width: 10rem;
-    font-size: 2rem;
-    padding: 1rem;
+    margin-right: 3rem;
+  }
+
+  #LandingPage-container {
+    padding: 12rem 8rem;
+  }
+
+  #LandingPage-text-main {
+    font-size: 9.5rem;
+    margin: 1rem 0;
+  }
+
+  #LandingPage-text-secondary {
+    font-size: 3.9rem;
+  }
+
+  .image-card {
+    width: 45%;
+  }
+
+  .image-card-image {
+    height: 30rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-item {
+    max-width: 15rem;
+  }
+
+  .nav-item a {
+    font-size: 1.6rem;
+  }
+
+  .nav-item:first-child {
+    width: 4.5rem;
+  }
+
+  .nav-item:last-child {
+    margin-right: 4rem;
   }
 
   #LandingPage {
@@ -686,22 +706,72 @@ body {
   }
 
   #LandingPage-text-main {
-    font-size: 7rem;
-    /* text-align: center; */
+    font-size: 8rem;
     margin: 1rem 0;
   }
 
   #LandingPage-text-secondary {
-    font-size: 3.8rem;
-    /* text-align: center; */
+    font-size: 3.7rem;
   }
 
   .image-card {
     width: 45%;
   }
+
+  .image-card-image {
+    height: 30rem;
+  }
 }
 
 /* * mobil nézet: */
+
+@media screen and (max-width: 750px) {
+  .nav-list {
+    /* padding: 0 1rem; */
+  }
+
+  .nav-item a {
+    font-size: 1.5rem;
+  }
+
+  .search-input {
+    font-size: 1.3rem;
+    width: 15rem;
+  }
+
+  .nav-item:first-child {
+    width: 4rem;
+  }
+
+  .nav-item:first-child img {
+    width: 2.5rem;
+  }
+
+  .nav-item:last-child {
+    margin-right: 0.5rem;
+  }
+
+  #LandingPage-container {
+    padding: 9rem 2.8rem;
+  }
+
+  #LandingPage-text-main {
+    font-size: 6rem;
+  }
+
+  #LandingPage-text-secondary {
+    font-size: 2.8rem;
+  }
+
+  .image-card {
+    width: 95%;
+  }
+
+  .image-card-image {
+    height: 27rem;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .nav-list {
     padding: 0 1rem;
@@ -752,6 +822,10 @@ body {
 
   .image-card {
     width: 100%;
+  }
+
+  .image-card-image {
+    height: 23rem;
   }
 }
 
