@@ -5,8 +5,9 @@ const postUser = async (email, password, endpoint) => {
     const bodyJson = JSON.stringify(bodyOject)
     const url = backendApi + endpoint
     try {
-        const response = await fetch(url, { method: "POST", body: bodyJson })
-        return response.status
+        const responseJson = await fetch(url, { method: "POST", body: bodyJson })
+        const responseObject = responseJson.json()
+        return responseObject
     }
     catch (error) {
         console.error(error)

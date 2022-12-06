@@ -79,7 +79,8 @@ body {
 }
 
 .nav-item {
-  max-width: 10.5rem;
+  width: 13rem; /* ! kimerevítettem a munkához: Gábor */
+  max-width: 13.5rem;
 }
 
 .nav-item:last-child {

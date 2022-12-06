@@ -1,5 +1,5 @@
 
-const Navbar = ({ onSignup, onLogin, onSearch }) => {
+const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch }) => {
 
   return (
     <div className="nav-bar">
@@ -15,18 +15,45 @@ const Navbar = ({ onSignup, onLogin, onSearch }) => {
         <li className="nav-item">
           <a href="#image-grid">Collection</a>
         </li>
+        {(onLoggedIn) ||
+          <li className="nav-item">
+            <a href="#top" onClick={() => {
+              onSignup(true)
+              onLogin(false)
+            }}>Signup</a>
+          </li>
+        }
+        {onLoggedIn ||
+          <li className="nav-item">
+            <a href="#top" onClick={() => {
+              onLogin(true)
+              onSignup(false)
+            }}>Login</a>
+          </li>
+        }
+        {(!onLoggedIn) ||
+          <li className="nav-item">
+            <a href="#top">My Gallery</a>
+          </li>
+        }
+        {(!onLoggedIn) ||
+          <li className="nav-item">
+            <a href="#top"
+            onClick={() => {
+              onLogout(false)
+              // localStorage.removeItem("accessToken")
+            }}>Log Out</a>
+          </li>
+        }
+
+        {/* IDEIGLENES SZAKASZ */}
         <li className="nav-item">
-          <a href="#top" onClick={() => {
-            onSignup(true)
-            onLogin(false)
-          }}>Signup</a>
+          <a href="#top"
+            onClick={() => {
+              onLogout(!onLoggedIn)
+            }}>#switch login#</a>
         </li>
-        <li className="nav-item">
-          <a href="#top" onClick={() => {
-            onLogin(true)
-            onSignup(false)
-          }}>Login</a>
-        </li>
+
         <li className="nav-item">
           <div className="tooltip">
             <input
@@ -49,6 +76,8 @@ const Navbar = ({ onSignup, onLogin, onSearch }) => {
             </span>
           </div>
         </li>
+
+
       </ul>
     </div>
   )

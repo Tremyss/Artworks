@@ -82,8 +82,8 @@ function App() {
   // ! Backend IP: backendApi
   // Signup handler
   const signupHandler = async (email, password, endpoint) => {
-    const responseStatus = await postUser(email, password, endpoint)
-    if (responseStatus === 200) {
+    const response = await postUser(email, password, endpoint)
+    if (response.status === 200) {
       alert("You are successfully signed up. Please log in page.")
       setIsSignup(false)
     }
@@ -92,9 +92,10 @@ function App() {
 
   // Login handler
   const loginHandler = async (email, password, endpoint) => {
-    const responseStatus = await postUser(email, password, endpoint)
-    if (responseStatus === 200) {
+    const response = await postUser(email, password, endpoint)
+    if (response.status === 200) {
       alert("Welcome back!")
+      // localStorage.setItem("accessToken", "response.accessToken")
       setIsLoggedIn(true)
     }
     if (responseStatus === 401) { alert("Wrong e-mail or password.") }
@@ -110,6 +111,8 @@ function App() {
       <Navbar
         onSignup={setIsSignup}
         onLogin={setIsLogin}
+        onLoggedIn={isLoggedIn}
+        onLogout={setIsLoggedIn}
         onSearch={onSearch}
       />
 
@@ -117,40 +120,53 @@ function App() {
         <div id="background">
 
           <div id="mainframe">
-            <LandingPage />
+            {!isLoggedIn &&
+              <LandingPage />
+            }
 
-            <div id="image-grid">
-              {images.length === 0 ?
-                <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
-                images.map(image => (
-                  <ImageCard
-                    key={image.id}
-                    image={image}
-                    onDownloadImage={imgId => downloadImage(imgId)}
-                    onShowDetails={id => setSelectedImageId(id)}
-                  />
-                ))}
-            <Pager
-              page={page}
-              totalPageCount={totalPageCount}
-              onPageChange={onPageChange}
-            />
-            </div>
+            {!isLoggedIn &&
+              <div id="image-grid">
+                {images.length === 0 ?
+                  <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
+                  images.map(image => (
+                    <ImageCard
+                      key={image.id}
+                      image={image}
+                      onDownloadImage={imgId => downloadImage(imgId)}
+                      onShowDetails={id => setSelectedImageId(id)}
+                    />
+                  ))}
+                <Pager
+                  page={page}
+                  totalPageCount={totalPageCount}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            }
+
+
+            {isLoggedIn &&
+              <div>
+                <h1>
+                  Hey, this is user page
+                </h1>
+              </div>
+            }
+
           </div>
+
 
           {selectedImageId !== null &&
             <ImageDetails
               selectedImage={selectedImage}
               onDownloadImage={imgId => downloadImage(imgId)}
               onClose={() => setSelectedImageId(null)} />}
-
           {isSignup &&
             <SignupModal
               endpoint={signupEndpoint}
               onSignup={signupHandler}
               onClose={setIsSignup}
             />}
-
           {isLogin &&
             <LoginModal
               endpoint={loginEndpoint}
