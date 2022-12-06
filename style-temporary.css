@@ -444,6 +444,7 @@ body {
 
 /* ? START OF PAGER SECTION */
 #pager-container {
+  /* background-color: rebeccapurple; */
   display: flex;
   width: 100%;
   justify-content: center;
@@ -455,12 +456,17 @@ body {
 #pager-next-button {
   background-color: var(--accent);
   color: var(--primary);
-  padding: 0.3rem;
+  font-family: "Sorts Mill Goudy", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 0.3rem 0.5rem;
 }
 
 #pager-counter {
-  color: var(--accent);
+  color: var(--key);
+  font-family: serif;
   font-size: 1.8rem;
+  letter-spacing: 0.1rem;
   margin: 2rem;
 }
 
