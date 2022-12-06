@@ -585,6 +585,51 @@ body {
 
 /* ! END OF SIGNUP/LOGIN SECTION */
 
+
+/* ? START OF USER AREA SECTION */
+#user-section-container{
+  padding-top: 6rem;
+  background-color: #ffb119;
+}
+
+#user-header-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#user-upload-section{
+  background-color: #99826b;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#user-upload-input-container{
+  background-color: #ffeecc;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#user-upload-message-container{
+background-color: burlywood;
+}
+
+#user-upload-button-container{
+  background-color: #33261a;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#user-image-grid-section{
+  background-color: brown;
+  height: 30rem;
+}
+
+/* ! END OF USER AREA SECTION */
+
+
 /* ? START OF LOADING ANIMATION SECTION */
 .lds-ellipsis {
   display: inline-block;
@@ -654,6 +699,7 @@ body {
 }
 
 /* ! END OF LOADING ANIMATION SECTION */
+
 
 /* ? START OF MEDIA QUERY SECTION */
 /* ? ami e lentieknél nagyobb felbontás, arra változatlanul a fenti css kód érvényes */
