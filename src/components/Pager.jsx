@@ -10,7 +10,7 @@ const Pager = ({ page, totalPageCount, onPageChange }) => {
       >
         Previous
       </button>
-      <div id="pager-counter">{page}/{totalPageCount}</div>
+      <div id="pager-counter">Page:&nbsp;{page} &nbsp;of&nbsp; {totalPageCount}</div>
       <button
         id="pager-next-button"
         onClick={() => onPageChange(page + 1)}

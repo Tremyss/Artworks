@@ -37,6 +37,8 @@ function App() {
   const [isSignup, setIsSignup] = useState(false)
   // Signup state for conditional rendering
   const [isLogin, setIsLogin] = useState(false)
+  // User logged in state
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
   // ! START: On Window Load - set App state
@@ -93,7 +95,7 @@ function App() {
     const responseStatus = await postUser(email, password, endpoint)
     if (responseStatus === 200) {
       alert("Welcome back!")
-      // set isLoggedIn to true --> render user's page w/ component
+      setIsLoggedIn(true)
     }
     if (responseStatus === 401) { alert("Wrong e-mail or password.") }
   }
@@ -116,6 +118,7 @@ function App() {
 
           <div id="mainframe">
             <LandingPage />
+
             <div id="image-grid">
               {images.length === 0 ?
                 <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
@@ -127,11 +130,12 @@ function App() {
                     onShowDetails={id => setSelectedImageId(id)}
                   />
                 ))}
-            </div>
             <Pager
               page={page}
               totalPageCount={totalPageCount}
-              onPageChange={onPageChange} />
+              onPageChange={onPageChange}
+            />
+            </div>
           </div>
 
           {selectedImageId !== null &&
