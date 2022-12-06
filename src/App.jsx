@@ -14,6 +14,11 @@ import SignupModal from "./components/SignupModal.jsx"
 import LoginModal from "./components/LoginModal.jsx"
 import Pager from "./components/Pager.jsx"
 
+// Set backend IP here
+const backendApi = "http://3.66.103.135:80"
+// Backend API's endpoints
+export const signupEndpoint = "/api/signup"
+export const loginEndpoint = "/api/login"
 
 function App() {
 
@@ -46,6 +51,19 @@ function App() {
 
 
   // ! UTIL FUNCTIONS
+  // Search handler
+  const onSearch = (search) => {
+    setSearchVal(search)
+    setImages([])
+    setPage(1)
+    window.scrollTo(0, window.innerHeight)
+  }
+
+  // Grid page handler
+  const onPageChange = (newPage) => {
+    setPage(newPage)
+  }
+
   // Show more handler: Select image to render more details
   const selectedImage = images.find(img => img.id === selectedImageId)
 
@@ -55,22 +73,34 @@ function App() {
     saveAs(`https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`, `${imgId}.jpg`)
   }
 
-  const onPageChange = (newPage) =>{
-    setPage(newPage)
+
+
+
+  // ! Backend IP: backendApi
+  // * Signup handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+  const signupHandler = async (email, password, endpoint) => {
+    const bodyOject = { email, password }
+    const url = backendApi + endpoint
+    console.log(url) // eddig jó
+    console.log(bodyOject) // eddig jó
+    console.log(JSON.stringify(bodyOject)) // eddig jó
+    try {
+      const response = await fetch(url, { method: "POST", body: JSON.stringify(bodyOject) })
+      if (response.status === 200) {alert("You are successfully signed up. Please log in page.")}
+      if (response.status === 409) {alert("This e-mail address is already registered to our system.")}
+      return response.status
+    }
+    catch (error) {
+      console.error(error)
+      return error
+    }
   }
 
-  // Search handler
-  const onSearch = (search) => {
-    setSearchVal(search)
-    setImages([])
-    setPage(1)
-    window.scrollTo(0, window.innerHeight)
-  }
+  // * Login handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
 
-  // * Backend IP: http://3.66.103.135:80
-  // Signup handler + api request: /api/signup Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
 
-  // Login handler + api request: /api/login Body (JSON): { "email": "useremail@example.com", "password": "userpassword" }
+
+
 
 
   return (
@@ -86,7 +116,7 @@ function App() {
         <div id="background">
 
           <div id="mainframe">
-            <LandingPage/>
+            <LandingPage />
             <div id="image-grid">
               {images.length === 0 ?
                 <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
@@ -100,9 +130,9 @@ function App() {
                 ))}
             </div>
             <Pager
-            page={page}
-            totalPageCount={totalPageCount}
-            onPageChange={onPageChange}/>
+              page={page}
+              totalPageCount={totalPageCount}
+              onPageChange={onPageChange} />
           </div>
 
           {selectedImageId !== null &&
@@ -114,7 +144,7 @@ function App() {
           {isSignup &&
             <SignupModal
               onClose={setIsSignup}
-            // onSignup={ signupHandler fc }
+              onSignup={signupHandler}
             />}
 
           {isLogin &&

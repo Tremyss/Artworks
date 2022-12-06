@@ -1,5 +1,5 @@
 const ImageDetails = ({ selectedImage, onDownloadImage, onClose }) => {
-  console.log(selectedImage)
+
   return (
     <div id="single-card-blur">
       <div id="single-card-background">
