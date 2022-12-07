@@ -161,7 +161,7 @@ const UserArea = ({ uploadEndpoint }) => {
                                 type="submit"
                                 id="user-upload-button"
                                 value="Save file"
-                                onClick={uploadHandler}
+                                // onClick={uploadHandler}
                             />
                         </div>
                     </div>
