@@ -83,17 +83,13 @@ function App() {
             {!isLoggedIn &&
               <LandingPage />
             }
-
             {!isLoggedIn &&
               <ImageGrid
                 searchVal={searchVal}
-              />
-            }
-
+              />}
             {isLoggedIn &&
-              <UserArea />
-            }
-
+              <UserArea
+              />}
           </div>
 
           {isSignup &&

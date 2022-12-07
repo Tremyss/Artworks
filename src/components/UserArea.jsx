@@ -1,41 +1,50 @@
 import { useState } from "react"
-
-const UserArea = ({ nemtommi }) => {
-    
-// STATES: User area upload section toggle and inputs
-const [uploadToggle, setUploadToggle] = useState(false)
-const [uploadTitleInput, setUploadTitleInput] = useState("")
-const [uploadDescriptionInput, setUploadDescriptionInput] = useState("")
-const [uploadFileInputValue, setUploadFileInputValue] = useState("")
-const [uploadServerMessage, setUploadServerMessage] = useState("Upload response here")
-const [uploadSelectedFile, setUploadSelectedFile] = useState({})
+import ImageGrid from "./ImageGrid.jsx"
 
 
-// ! Search handler for user's database (title, desc?)
-// ? Ezt majd implementálni kell a museum api search handlerből.
-// *Lilla? :)
-/* Minta a database-ről
-[
-    {
-        "id": "2465500f-ff23-4b44-88ea-99fbb8272a62",
-        "title": "Schiele_3",
-        "description": "kép",
-        "url": "localhost:8080/api/artwork/2465500f-ff23-4b44-88ea-99fbb8272a62.jpg"
+const UserArea = ({ }) => {
+
+    // STATES: User area upload section toggle and inputs
+    const [uploadToggle, setUploadToggle] = useState(false)
+    const [uploadTitleInput, setUploadTitleInput] = useState("")
+    const [uploadDescriptionInput, setUploadDescriptionInput] = useState("")
+    const [uploadFileInputValue, setUploadFileInputValue] = useState("")
+    const [uploadServerMessage, setUploadServerMessage] = useState("Upload response here")
+    const [uploadSelectedFile, setUploadSelectedFile] = useState({})
+    // User Search input states
+    const [userSearchVal, setUserSearchVal] = useState("")
+
+
+    // ! Search handler for user's database (title, desc?)
+    // ? Ezt majd implementálni kell a museum api search handlerből.
+    const onUserSearch = (search) => {
+        setUserSearchVal(search)
+        // window.scrollTo(0, window.innerHeight)
     }
-]
 
-{
-    "email": "test4@test.com",
-        "password": "1234"
-}
- */
+    // *Lilla? :)
+    /* Minta a database-ről
+    [
+        {
+            "id": "2465500f-ff23-4b44-88ea-99fbb8272a62",
+            "title": "Schiele_3",
+            "description": "kép",
+            "url": "localhost:8080/api/artwork/2465500f-ff23-4b44-88ea-99fbb8272a62.jpg"
+        }
+    ]
+    
+    {
+        "email": "test4@test.com",
+            "password": "1234"
+    }
+     */
 
 
-// Upload Handler - Hozom: Gábor
+    // Upload Handler - Hozom: Gábor
 
-// Delete Handler - Hozom: Gábor
+    // Delete Handler - Hozom: Gábor
 
-// Edit handler - Ez még kicsit homály, talán modalban kellene...
+    // Edit handler - Ez még kicsit homály, talán modalban kellene...
 
 
 
@@ -64,14 +73,13 @@ const [uploadSelectedFile, setUploadSelectedFile] = useState({})
                                 type="search"
                                 name="search-users"
                                 id="search-users"
-                                placeholder="search my gallery"
+                                placeholder="search in my gallery"
                                 spellCheck="false"
-                            // onKeyDown={(event) => {
-                            //   if (event.key === "Enter") {
-                            //     onSearch(event.target.value)
-                            //     // document.getElementById("image-grid").scrollIntoView();
-                            //   }
-                            // }}
+                                // onKeyDown={(event) => {
+                                //     if (event.key === "Enter") {
+                                //         onUserSearch(event.target.value)
+                                //     }
+                                // }}
                             />
                             <span className="tooltiptext">
                                 Search among your saved pictures:
@@ -83,6 +91,13 @@ const [uploadSelectedFile, setUploadSelectedFile] = useState({})
 
                 {uploadToggle &&
                     <div id="user-upload-section">
+
+                        <div id="user-upload-banner-container">
+                            <p id="user-upload-banner-text">
+                                Upload new art
+                            </p>
+                        </div>
+
 
                         <div id="user-upload-input-container">
                             <input
@@ -134,7 +149,9 @@ const [uploadSelectedFile, setUploadSelectedFile] = useState({})
 
                 <div id="user-image-grid-section">
 
-      // ! image grid component ???
+                    <ImageGrid
+                    // searchVal={userSearchVal} //a user db search eredményéből
+                    />
 
                 </div>
 

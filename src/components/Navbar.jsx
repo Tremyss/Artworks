@@ -61,7 +61,7 @@ const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch }) => {
               type="search"
               name="search-api"
               id="search-api"
-              placeholder="search"
+              placeholder="search in AIC"
               spellCheck="false"
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
