@@ -62,6 +62,7 @@ const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch, onHome, onC
             <a href="#top"
               onClick={() => {
                 onLogout(false)
+                onHome(true)
                 // localStorage.removeItem("accessToken")
               }}>Log Out</a>
           </li>
