@@ -5,7 +5,7 @@ import ImageDetails from "./ImageDetails.jsx"
 import Pager from "./Pager.jsx"
 import { saveAs } from "file-saver"
 
-const ImageGrid = ({searchVal}) => {
+const ImageGrid = ({ searchVal }) => {
 
   const [images, setImages] = useState([])
   // ImageDetails - Single Image Card state
@@ -13,7 +13,7 @@ const ImageGrid = ({searchVal}) => {
   // Pager states
   const [page, setPage] = useState(1)
   const [totalPageCount, setTotalPageCount] = useState(null)
-  
+
 
   const loadData = async () => {
     const [images, totalPage] = await getData(searchVal, page)
