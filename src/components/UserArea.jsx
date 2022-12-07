@@ -2,8 +2,9 @@ import { useState } from "react"
 import ImageGrid from "./ImageGrid.jsx"
 
 
-const UserArea = ({ }) => {
+const UserArea = ({ uploadEndpoint }) => {
 
+    console.log(uploadEndpoint)
     // STATES: User area upload section toggle and inputs
     const [uploadToggle, setUploadToggle] = useState(false)
     const [uploadTitleInput, setUploadTitleInput] = useState("")
@@ -40,7 +41,26 @@ const UserArea = ({ }) => {
      */
 
 
-    // Upload Handler - Hozom: Gábor
+    // Upload Handler - Hozom: Gábor EGYELŐRE FÉLRETÉVE
+    // const uploadHandler = async () => {
+    //     if (!uploadTitleInput || !uploadDescriptionInput || !uploadFileInputValue) {
+    //         setUploadServerMessage("Please choose a file and fill all fields before uploading!")
+    //         return false
+    //     }
+    //     const formData = new FormData()
+    //     formData.append("title", uploadTitleInput)
+    //     formData.append("description", uploadDescriptionInput)
+    //     formData.append("imgfile", uploadSelectedFile)
+
+    //     const response = await fetch(url, {
+    //         method: "POST", 
+    //         body: formData,
+    //         headers: {
+    //             // Ide jön az access token
+    //         }
+    //     })
+    //     setUploadServerMessage((response === 201) ? "Image and data saved on server." : "Response status: " + response)
+    // }
 
     // Delete Handler - Hozom: Gábor
 
@@ -75,11 +95,11 @@ const UserArea = ({ }) => {
                                 id="search-users"
                                 placeholder="search in my gallery"
                                 spellCheck="false"
-                                // onKeyDown={(event) => {
-                                //     if (event.key === "Enter") {
-                                //         onUserSearch(event.target.value)
-                                //     }
-                                // }}
+                            // onKeyDown={(event) => {
+                            //     if (event.key === "Enter") {
+                            //         onUserSearch(event.target.value)
+                            //     }
+                            // }}
                             />
                             <span className="tooltiptext">
                                 Search among your saved pictures:
@@ -141,7 +161,7 @@ const UserArea = ({ }) => {
                                 type="submit"
                                 id="user-upload-button"
                                 value="Save file"
-                            // onClick={uploadHandler}
+                                onClick={uploadHandler}
                             />
                         </div>
                     </div>

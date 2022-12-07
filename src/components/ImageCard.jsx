@@ -1,4 +1,4 @@
-function ImageCard({ image, onDownloadImage, onShowDetails }) {
+function ImageCard({ image, onDownloadImage, onShowDetails, onEditDetails, isMyGallery }) {
   return (
     <div className="image-card">
       <img
@@ -12,10 +12,11 @@ function ImageCard({ image, onDownloadImage, onShowDetails }) {
       />
       <div className="image-card-middle">
         <div className="image-card-maininfo">
-          <p className="image-card-title">{image.title.length<35?image.title:`${image.title.slice(0,35)}....`}</p>
+          <p className="image-card-title">{image.title.length < 35 ? image.title : `${image.title.slice(0, 35)}....`}</p>
           <p className="image-card-author">{image.artist_title}</p>
         </div>
         <div className="image-card-buttons">
+
           <div className="tooltip">
             <span className="tooltiptext">
               download
@@ -24,6 +25,35 @@ function ImageCard({ image, onDownloadImage, onShowDetails }) {
               <span className="material-symbols-outlined">download</span>
             </button>
           </div>
+
+          {(isMyGallery == undefined) &&
+            <div className="tooltip">
+              <span className="tooltiptext">
+                delete image
+              </span>
+              <button className="image-card-download-button"
+              // onClick={() => onDownloadImage(image.image_id)}
+              >
+                <span className="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+          }
+
+          {(isMyGallery == undefined) &&
+            <div className="tooltip">
+              <span className="tooltiptext">
+                edit image's data
+              </span>
+              <button className="image-card-download-button"
+                onClick={
+                  () => {onEditDetails(image.id)
+                }}
+              >
+                <span className="material-symbols-outlined">edit</span>
+              </button>
+            </div>
+          }
+
           <div className="tooltip">
             <span className="tooltiptext">
               more info
@@ -32,6 +62,7 @@ function ImageCard({ image, onDownloadImage, onShowDetails }) {
               <span className="material-symbols-outlined">info</span>
             </button>
           </div>
+
         </div>
       </div>
     </div>

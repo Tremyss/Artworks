@@ -11,12 +11,14 @@ import SignupModal from "./components/SignupModal.jsx"
 import LoginModal from "./components/LoginModal.jsx"
 import ImageGrid from "./components/ImageGrid.jsx"
 import UserArea from "./components/UserArea.jsx"
+import { useEffect } from "react"
 
 // Set backend IP here
-export const backendApi = "http://3.66.103.135:80"
+export const backendApi = "http://3.124.138.66"
 // Backend API's endpoints
 const signupEndpoint = "/api/signup"
 const loginEndpoint = "/api/login"
+const uploadEndpoint = "/api/artwork"
 
 function App() {
 
@@ -34,7 +36,9 @@ function App() {
   const [isCollections, setIsCollections] = useState(false)
   const [isMyGallery, setIsMyGallery] = useState(false)
 
-
+useEffect( ()=> {
+  console.log(isMyGallery)
+}, [isMyGallery])
 
   // ! UTIL FUNCTIONS
   // Search handler
@@ -63,7 +67,7 @@ function App() {
       // localStorage.setItem("accessToken", "response.accessToken")
       setIsLoggedIn(true)
     }
-    if (responseStatus === 401) { alert("Wrong e-mail or password.") }
+    // if (responseStatus === 401) { alert("Wrong e-mail or password.") }
   }
 
 
@@ -87,12 +91,12 @@ function App() {
         <div id="background">
           <div id="mainframe">
 
-
             {isHome &&
               <>
                 <LandingPage />
                 <ImageGrid
                   searchVal={searchVal}
+                  isMyGallery={isMyGallery}
                 />
               </>
             }
@@ -102,28 +106,15 @@ function App() {
                 <LandingPage />
                 <ImageGrid
                   searchVal={searchVal}
+                  isMyGallery={isMyGallery}
                 />
               </>
             }
 
-            {/* 
-            {!isLoggedIn &&
-              <ImageGrid
-                searchVal={searchVal}
-              />} */}
-
-
             {(isLoggedIn && isMyGallery) &&
               <UserArea
+              uploadEndpoint={uploadEndpoint}
               />}
-
-
-
-
-
-
-
-
           </div>
 
           {isSignup &&

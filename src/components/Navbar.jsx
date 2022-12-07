@@ -2,7 +2,6 @@
 
 
 const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch, onHome, onCollection, onMyGallery }) => {
-
   return (
     <div className="nav-bar">
       <ul className="nav-list">
@@ -63,6 +62,7 @@ const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch, onHome, onC
               onClick={() => {
                 onLogout(false)
                 onHome(true)
+                onMyGallery(false)
                 // localStorage.removeItem("accessToken")
               }}>Log Out</a>
           </li>
