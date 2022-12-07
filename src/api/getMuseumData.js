@@ -1,4 +1,4 @@
-const getData = async (searchVal, page) => {
+const getMuseumData = async (searchVal, page) => {
     const apiUrl = `https://api.artic.edu/api/v1/artworks/search?
         q=${searchVal}
         &page=${page}
@@ -15,4 +15,4 @@ const getData = async (searchVal, page) => {
     }
 }
 
-export default getData
+export default getMuseumData

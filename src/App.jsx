@@ -1,19 +1,15 @@
 // Import stylesheet - Temporary sheet used yet !!!!!!!!
 import "./App.css"
 // Import Node modules
-import { useEffect, useState } from "react"
-import { saveAs } from "file-saver"
+import { useState } from "react"
 // Import functions
-import getData from "./api/getData.js"
 import postUser from "./api/postUser.js"
 // Import components
-import ImageCard from "./components/ImageCard.jsx"
 import Navbar from "./components/Navbar.jsx"
-import ImageDetails from "./components/ImageDetails.jsx"
 import LandingPage from "./components/LandingPage.jsx"
 import SignupModal from "./components/SignupModal.jsx"
 import LoginModal from "./components/LoginModal.jsx"
-import Pager from "./components/Pager.jsx"
+import ImageGrid from "./components/ImageGrid"
 
 // Set backend IP here
 export const backendApi = "http://3.66.103.135:80"
@@ -24,15 +20,8 @@ const loginEndpoint = "/api/login"
 function App() {
 
   // ! STATES
-  // App state
-  const [images, setImages] = useState([])
-  // Search input states
+    // Search input states
   const [searchVal, setSearchVal] = useState("")
-  // ImageDetails - Single Image Card state
-  const [selectedImageId, setSelectedImageId] = useState(null)
-  // Pager states
-  const [page, setPage] = useState(1)
-  const [totalPageCount, setTotalPageCount] = useState(null)
   // Login state for conditional rendering
   const [isSignup, setIsSignup] = useState(false)
   // Signup state for conditional rendering
@@ -44,42 +33,15 @@ function App() {
   const [uploadTitleInput, setUploadTitleInput] = useState("")
   const [uploadDescriptionInput, setUploadDescriptionInput] = useState("")
   const [uploadFileInputValue, setUploadFileInputValue] = useState("")
-  const [uploadSelectedFile, setUploadSelectedFile] = useState({})
   const [uploadServerMessage, setUploadServerMessage] = useState("Upload response here")
-
-  // ! START: On Window Load - set App state
-  const loadData = async () => {
-    const [images, totalPage] = await getData(searchVal, page)
-    setImages(images)
-    setTotalPageCount(totalPage)
-  }
-
-  useEffect(() => {
-    loadData()
-  }, [searchVal, page])
+  const [uploadSelectedFile, setUploadSelectedFile] = useState({})
 
 
   // ! UTIL FUNCTIONS
   // Search handler
   const onSearch = (search) => {
     setSearchVal(search)
-    setImages([])
-    setPage(1)
     window.scrollTo(0, window.innerHeight)
-  }
-
-  // Grid page handler
-  const onPageChange = (newPage) => {
-    setPage(newPage)
-  }
-
-  // Show more handler: Select image to render more details
-  const selectedImage = images.find(img => img.id === selectedImageId)
-
-  // Download handler
-  const downloadImage = (imgId) => {
-    console.log(imgId)
-    saveAs(`https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`, `${imgId}.jpg`)
   }
 
 
@@ -106,12 +68,6 @@ function App() {
   }
 
 
-
-
-
-
-
-
   // ! Search handler for user's database (title, desc?)
   // ? Ezt majd implementálni kell a museum api search handlerből.
   // *Lilla? :)
@@ -121,11 +77,6 @@ function App() {
   // Delete Handler - Hozom: Gábor
 
   // Edit handler - Ez még kicsit homály, talán modalban kellene...
-
-
-
-
-
 
 
 
@@ -143,30 +94,15 @@ function App() {
 
       <main>
         <div id="background">
-
           <div id="mainframe">
             {!isLoggedIn &&
-              <LandingPage />
+              <LandingPage/>
             }
 
             {!isLoggedIn &&
-              <div id="image-grid">
-                {images.length === 0 ?
-                  <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
-                  images.map(image => (
-                    <ImageCard
-                      key={image.id}
-                      image={image}
-                      onDownloadImage={imgId => downloadImage(imgId)}
-                      onShowDetails={id => setSelectedImageId(id)}
-                    />
-                  ))}
-                <Pager
-                  page={page}
-                  totalPageCount={totalPageCount}
-                  onPageChange={onPageChange}
-                />
-              </div>
+              <ImageGrid
+              searchVal={searchVal}
+              />
             }
 
 
@@ -275,13 +211,6 @@ function App() {
             }
 
           </div>
-
-
-          {selectedImageId !== null &&
-            <ImageDetails
-              selectedImage={selectedImage}
-              onDownloadImage={imgId => downloadImage(imgId)}
-              onClose={() => setSelectedImageId(null)} />}
           {isSignup &&
             <SignupModal
               endpoint={signupEndpoint}
