@@ -20,7 +20,7 @@ const loginEndpoint = "/api/login"
 function App() {
 
   // ! STATES
-    // Search input states
+  // Search input states
   const [searchVal, setSearchVal] = useState("")
   // Login state for conditional rendering
   const [isSignup, setIsSignup] = useState(false)
@@ -96,12 +96,12 @@ function App() {
         <div id="background">
           <div id="mainframe">
             {!isLoggedIn &&
-              <LandingPage/>
+              <LandingPage />
             }
 
             {!isLoggedIn &&
               <ImageGrid
-              searchVal={searchVal}
+                searchVal={searchVal}
               />
             }
 
@@ -112,7 +112,7 @@ function App() {
 
                   <div id="user-header-section">
                     <div id="user-header-greeting-container">
-                      <p id="user-greeting">Your Gallery</p>
+                      <p id="user-greeting">My Gallery</p>
                     </div>
                     <div id="user-header-button-container">
                       <button
@@ -120,7 +120,7 @@ function App() {
                         onClick={() => {
                           setUploadToggle(!uploadToggle)
                         }}>
-                        {(!uploadToggle) ? "Open upload panel" : "Close upload panel"}
+                        {(!uploadToggle) ? "Upload" : "Close"}
                         <span className="material-symbols-outlined">upload</span>
                       </button>
                     </div>
@@ -192,7 +192,7 @@ function App() {
                         <input
                           type="submit"
                           id="user-upload-button"
-                          value="Upload!"
+                          value="Save file"
                         // onClick={uploadHandler}
                         />
                       </div>
@@ -204,7 +204,7 @@ function App() {
                     // ! image grid component ???
 
                   </div>
-                  
+
                 </div>
 
               </div>
