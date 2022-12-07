@@ -6,7 +6,7 @@ import Pager from "./Pager.jsx"
 import { saveAs } from "file-saver"
 
 const ImageGrid = ({ searchVal }) => {
-
+  // App state
   const [images, setImages] = useState([])
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null)

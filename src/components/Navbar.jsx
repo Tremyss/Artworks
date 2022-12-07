@@ -1,5 +1,7 @@
+// • ( ( !isLoggedIn && Collections)   ( isLoggedIn && Collections) -> Landing + Chicago Grid #image-grid
 
-const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch }) => {
+
+const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch, onHome, onCollection, onMyGallery }) => {
 
   return (
     <div className="nav-bar">
@@ -10,10 +12,23 @@ const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch }) => {
           {/* </a> */}
         </li>
         <li className="nav-item">
-          <a href="#top">Home</a>
+          <a href="#top"
+            onClick={() => {
+              onHome(true)
+              onCollection(false)
+              onMyGallery(false)
+            }}
+
+          >Home</a>
         </li>
         <li className="nav-item">
-          <a href="#image-grid">Collection</a>
+          <a href="#image-grid"
+            onClick={() => {
+              onHome(false)
+              onCollection(true)
+              onMyGallery(false)
+            }}
+          >Collection</a>
         </li>
         {(onLoggedIn) ||
           <li className="nav-item">
@@ -33,16 +48,22 @@ const Navbar = ({ onSignup, onLogin, onLoggedIn, onLogout, onSearch }) => {
         }
         {(!onLoggedIn) ||
           <li className="nav-item">
-            <a href="#top">My Gallery</a>
+            <a href="#top"
+              onClick={() => {
+                onHome(false)
+                onCollection(false)
+                onMyGallery(true)
+              }}
+            >My Gallery</a>
           </li>
         }
         {(!onLoggedIn) ||
           <li className="nav-item">
             <a href="#top"
-            onClick={() => {
-              onLogout(false)
-              // localStorage.removeItem("accessToken")
-            }}>Log Out</a>
+              onClick={() => {
+                onLogout(false)
+                // localStorage.removeItem("accessToken")
+              }}>Log Out</a>
           </li>
         }
 

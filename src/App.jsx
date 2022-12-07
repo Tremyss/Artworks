@@ -29,6 +29,10 @@ function App() {
   const [isLogin, setIsLogin] = useState(false)
   // User logged in state
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // NAV Items' states
+  const [isHome, setIsHome] = useState(true)
+  const [isCollections, setIsCollections] = useState(false)
+  const [isMyGallery, setIsMyGallery] = useState(false)
 
 
 
@@ -64,8 +68,6 @@ function App() {
 
 
 
-
-
   return (
     <div className="App">
 
@@ -75,21 +77,53 @@ function App() {
         onLoggedIn={isLoggedIn}
         onLogout={setIsLoggedIn}
         onSearch={onSearch}
+
+        onHome={setIsHome}
+        onCollection={setIsCollections}
+        onMyGallery={setIsMyGallery}
       />
 
       <main>
         <div id="background">
           <div id="mainframe">
-            {!isLoggedIn &&
-              <LandingPage />
+
+
+            {isHome &&
+              <>
+                <LandingPage />
+                <ImageGrid
+                  searchVal={searchVal}
+                />
+              </>
             }
+
+            {isCollections &&
+              <>
+                <LandingPage />
+                <ImageGrid
+                  searchVal={searchVal}
+                />
+              </>
+            }
+
+            {/* 
             {!isLoggedIn &&
               <ImageGrid
                 searchVal={searchVal}
-              />}
-            {isLoggedIn &&
+              />} */}
+
+
+            {(isLoggedIn && isMyGallery) &&
               <UserArea
               />}
+
+
+
+
+
+
+
+
           </div>
 
           {isSignup &&
