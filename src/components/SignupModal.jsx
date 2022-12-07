@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const SignupModal = ({ endpoint, onSignup, onClose }) => {
-
+console.log(endpoint)
     const [emailInput, setEmailInput] = useState("")
     const [passwordInput, setPasswordInput] = useState("")
 
