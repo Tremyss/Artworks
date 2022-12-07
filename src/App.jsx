@@ -64,10 +64,14 @@ useEffect( ()=> {
     const response = await postUser(email, password, endpoint)
     if (response.status === 200) {
       alert("Welcome back!")
-      // localStorage.setItem("accessToken", "response.accessToken")
+      console.log(response.status)
+      console.log(response.accessToken)
+      localStorage.setItem("accessToken", response.accessToken)
+      console.log(localStorage)
       setIsLoggedIn(true)
+      setIsLogin(false)
     }
-    // if (responseStatus === 401) { alert("Wrong e-mail or password.") }
+    if (response.status === 403) { alert("Wrong e-mail or password.") }
   }
 
 
