@@ -633,6 +633,7 @@ body {
 }
 
 #user-upload-section {
+  z-index: 100;
   position: absolute;
   top: 12rem;
   background-color: var(--tertiary);
@@ -711,9 +712,9 @@ body {
 }
 
 #user-image-grid-section {
-  background-color: brown;
+  /* background-color: brown; */
   width: 100%;
-  height: 30rem;
+  /* height: 30rem; */
 }
 
 /* ! END OF USER AREA SECTION */
