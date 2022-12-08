@@ -1055,6 +1055,20 @@ body {
   #login-card-blur {
     padding: 4rem;
   }
+
+  .edit-card-content-title-p {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  #edit-card-content-img-container {
+    height: 9rem;
+  }
+
+  #edit-card-content-img {
+    height: 9rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -1117,7 +1131,26 @@ body {
     padding: 3rem;
   }
 
-  #login-card-background {
+  #edit-card-background {
+    height: 32rem;
+  }
+
+  .edit-card-content-title-p {
+    color: var(--primary);
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  #edit-card-content-img-container {
+    height: 7rem;
+  }
+
+  #edit-card-content-img {
+    height: 7rem;
+  }
+
+  .edit-card-content-input {
+    font-size: 1.3rem;
   }
 }
 
