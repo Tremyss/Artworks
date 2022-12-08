@@ -634,7 +634,7 @@ body {
 
 #user-upload-section {
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 12rem;
   background-color: var(--tertiary);
   width: 32rem;

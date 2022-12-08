@@ -27,7 +27,8 @@ jobs:
     - name: Build
       run: |
         npm install -y
-        npx webpack
+        npx webpack-cli -y
+        npx webpack -y
 
     - name: Log in to Docker Hub
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
