@@ -587,15 +587,6 @@ body {
 
 /* ! END OF SIGNUP/LOGIN MODAL SECTION */
 
-
-
-
-
-
-
-
-
-
 /* ? START OF EDIT MODAL SECTION */
 
 #edit-card-blur {
@@ -616,7 +607,7 @@ body {
   position: relative;
   background-color: var(--secondary);
   width: 50rem;
-  height: 22.5rem;
+  height: 34rem;
   padding: 1.5rem;
   display: flex;
   align-items: center;
@@ -653,29 +644,29 @@ body {
 }
 
 #edit-card-content-title {
-  color: var(--primary);
   display: flex;
+}
+
+.edit-card-content-title-p {
+  color: var(--primary);
   font-size: 2rem;
   font-weight: 700;
 }
 
-.edit-card-content-title-p {
-  color: red;
-}
-
 #edit-card-content-mid-section {
-  color: green;
+  background-color: green;
 }
 
-#edit-card-content-img-container{
-  color: aqua;
+#edit-card-content-img-container {
+  /* background-color: aqua; */
 }
 
-#edit-card-content-img{
+#edit-card-content-img {
   width: 80px;
 }
 
 #edit-card-content-inputs-container {
+  background-color: fuchsia;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -722,16 +713,6 @@ body {
 }
 
 /* ! END OF EDIT MODAL SECTION */
-
-
-
-
-
-
-
-
-
-
 
 /* ? START OF USER AREA SECTION */
 #user-section-container {
