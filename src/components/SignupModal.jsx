@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const SignupModal = ({ endpoint, onSignup, onClose }) => {
+const SignupModal = ({ endpoint, onSignup, onClose, signUpMessage }) => {
 console.log(endpoint)
     const [emailInput, setEmailInput] = useState("")
     const [passwordInput, setPasswordInput] = useState("")
@@ -35,6 +35,7 @@ console.log(endpoint)
                         />
                     </div>
                     <div id="login-card-content-button-container" >
+                        <p>{signUpMessage}</p>
                         <button
                             className="login-card-button"
                             onClick={() => onSignup(emailInput, passwordInput, endpoint)}>

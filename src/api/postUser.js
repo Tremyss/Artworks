@@ -4,23 +4,15 @@ const postUser = async (email, password, endpoint) => {
     const bodyOject = { email, password }
     const bodyJson = JSON.stringify(bodyOject)
     const url = backendApi + endpoint
-    console.log(email)
-    console.log(password)
-    console.log(url)
-    console.log(bodyJson)
     try {
         const responseJson = await fetch(url, {
             method: "POST",
-            body: bodyJson
+            body: bodyJson, 
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
-        const responseObject = await responseJson.json()
-        console.log(responseJson)
-        console.log(responseJson.status)
-        console.log(responseObject.accessToken)
-        return {
-            status: responseJson.status, 
-            accessToken: responseObject.accessToken
-        }
+        return responseJson
     }
     catch (error) {
         console.error(error)

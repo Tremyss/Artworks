@@ -29,6 +29,7 @@ function App() {
   const [isSignup, setIsSignup] = useState(false)
   // Signup state for conditional rendering
   const [isLogin, setIsLogin] = useState(false)
+  const [signUpMessage, setSignUpMessage] = useState("")
   // User logged in state
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   // NAV Items' states
@@ -36,9 +37,9 @@ function App() {
   const [isCollections, setIsCollections] = useState(false)
   const [isMyGallery, setIsMyGallery] = useState(false)
 
-useEffect( ()=> {
-  console.log(isMyGallery)
-}, [isMyGallery])
+  useEffect(() => {
+    console.log(isMyGallery)
+  }, [isMyGallery])
 
   // ! UTIL FUNCTIONS
   // Search handler
@@ -53,28 +54,25 @@ useEffect( ()=> {
   const signupHandler = async (email, password, endpoint) => {
     const response = await postUser(email, password, endpoint) // ! 415-ös válasz jön vissza
     if (response.status === 200) {
-      alert("You are successfully signed up. Please log in page.")
-      setIsSignup(false)
+      setSignUpMessage("Sign up successfull. Please log in.")
     }
-    // if (responseStatus === 409) { alert("This e-mail address is already registered to our system.") }
+    if (response.status === 409) setSignUpMessage("E-mail address already exists.")
   }
 
   // Login handler
   const loginHandler = async (email, password, endpoint) => {
     const response = await postUser(email, password, endpoint)
     if (response.status === 200) {
-      alert("Welcome back!")
-      console.log(response.status)
-      console.log(response.accessToken)
-      localStorage.setItem("accessToken", response.accessToken)
-      console.log(localStorage)
+      const responseObject = await response.json()
+      localStorage.setItem("accessToken", responseObject.accessToken)
       setIsLoggedIn(true)
       setIsLogin(false)
-    } // * Ez a rész működik
+      setIsHome(false)
+      setIsCollections(false)
+      setIsMyGallery(true)
+    }
     if (response.status === 403) { alert("Wrong e-mail or password.") }
-  } // ! Ez a rész nem működik. Az error lehet, hogy a catch ágba fut
-
-
+  }
 
   return (
     <div className="App">
@@ -117,7 +115,7 @@ useEffect( ()=> {
 
             {(isLoggedIn && isMyGallery) &&
               <UserArea
-              uploadEndpoint={uploadEndpoint}
+                uploadEndpoint={uploadEndpoint}
               />}
           </div>
 
@@ -126,6 +124,7 @@ useEffect( ()=> {
               endpoint={signupEndpoint}
               onSignup={signupHandler}
               onClose={setIsSignup}
+              signUpMessage={signUpMessage}
             />}
           {isLogin &&
             <LoginModal
