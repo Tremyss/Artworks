@@ -20,6 +20,7 @@ const LoginModal = ({ endpoint, onLogin, onClose }) => {
                             className="login-card-content-input"
                             name="email"
                             placeholder="email"
+                            maxLength="40"
                             required
                             value={emailInput}
                             onChange={(event) => setEmailInput(event.target.value)}
@@ -29,6 +30,7 @@ const LoginModal = ({ endpoint, onLogin, onClose }) => {
                             className="login-card-content-input"
                             name="password"
                             placeholder="password"
+                            maxLength="15"
                             required
                             value={passwordInput}
                             onChange={(event) => setPasswordInput(event.target.value)}

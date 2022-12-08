@@ -478,7 +478,7 @@ body {
 
 /* ! END OF IMAGEDETAILS (Single Card) SECTION */
 
-/* ? START OF SIGNUP/LOGIN SECTION */
+/* ? START OF SIGNUP/LOGIN MODAL SECTION */
 
 #login-card-blur {
   background-color: rgba(61, 51, 42, 0.75);
@@ -585,7 +585,153 @@ body {
     rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
 }
 
-/* ! END OF SIGNUP/LOGIN SECTION */
+/* ! END OF SIGNUP/LOGIN MODAL SECTION */
+
+
+
+
+
+
+
+
+
+
+/* ? START OF EDIT MODAL SECTION */
+
+#edit-card-blur {
+  background-color: rgba(61, 51, 42, 0.75);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10rem;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-card-background {
+  position: relative;
+  background-color: var(--secondary);
+  width: 50rem;
+  height: 22.5rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 1rem;
+}
+
+#edit-card-close-button {
+  display: block;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  align-self: flex-end;
+  border: none;
+  background-color: var(--tertiary);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+#edit-card-content {
+  background-color: var(--tertiary);
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#edit-card-content-title {
+  color: var(--primary);
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.edit-card-content-title-p {
+  color: red;
+}
+
+#edit-card-content-mid-section {
+  color: green;
+}
+
+#edit-card-content-img-container{
+  color: aqua;
+}
+
+#edit-card-content-img{
+  width: 80px;
+}
+
+#edit-card-content-inputs-container {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.edit-card-content-input {
+  background-color: var(--accent);
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.4rem;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  border-radius: 0.25rem;
+}
+
+#edit-card-content-button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.edit-card-button {
+  background-color: var(--accent);
+  font-family: "Sorts Mill Goudy", serif;
+  font-weight: 700;
+  border-radius: 3px;
+  height: 2.5rem;
+  margin: 0 2rem;
+  padding: 1.3rem 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.edit-card-button:hover {
+  cursor: pointer;
+  box-shadow: var(--accent) 0px 1px 3px 0px,
+    rgba(195, 200, 91, 0.06) 0px 1px 2px 0px;
+}
+
+/* ! END OF EDIT MODAL SECTION */
+
+
+
+
+
+
+
+
+
+
 
 /* ? START OF USER AREA SECTION */
 #user-section-container {

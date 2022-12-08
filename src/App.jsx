@@ -43,32 +43,25 @@ function App() {
 
 
 
-const loadUsersData = async () => {
-  const accessToken = localStorage.getItem("accessToken")
-  console.log(accessToken)
-  const url = backendApi + usersDataEndpoint
-  const responseJson = await fetch (url, {
-    method: "GET",
-    headers: {
-      "Authorization": `Bearer ${accessToken}`
-    }
-  })
-  const responseObject = await responseJson.json()
-  console.log(responseJson)
-  console.log(responseObject)
-}
+// const loadUsersData = async () => {
+//   const accessToken = localStorage.getItem("accessToken")
+//   console.log(accessToken)
+//   const url = backendApi + usersDataEndpoint
+//   const responseJson = await fetch (url, {
+//     method: "GET",
+//     headers: {
+//       "Authorization": `Bearer ${accessToken}`
+//     }
+//   })
+//   const responseObject = await responseJson.json()
+//   console.log(responseJson)
+//   console.log(responseObject)
+// }
 
 
-useEffect ( () => {
-  loadUsersData()
-}, [isLoggedIn])
-
-
-
-
-
-
-
+// useEffect ( () => {
+//   loadUsersData()
+// }, [isLoggedIn])
 
 
 

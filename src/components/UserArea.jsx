@@ -1,10 +1,9 @@
 import { useState } from "react"
 import ImageGrid from "./ImageGrid.jsx"
 
-
 const UserArea = ({ uploadEndpoint }) => {
 
-    console.log(uploadEndpoint)
+    // console.log(uploadEndpoint)
     // STATES: User area upload section toggle and inputs
     const [uploadToggle, setUploadToggle] = useState(false)
     const [uploadTitleInput, setUploadTitleInput] = useState("")
@@ -24,22 +23,6 @@ const UserArea = ({ uploadEndpoint }) => {
     }
 
     // *Lilla? :)
-    /* Minta a database-ről
-    [
-        {
-            "id": "2465500f-ff23-4b44-88ea-99fbb8272a62",
-            "title": "Schiele_3",
-            "description": "kép",
-            "url": "localhost:8080/api/artwork/2465500f-ff23-4b44-88ea-99fbb8272a62.jpg"
-        }
-    ]
-    
-    {
-        "email": "test4@test.com",
-            "password": "1234"
-    }
-     */
-
 
     // Upload Handler - Hozom: Gábor EGYELŐRE FÉLRETÉVE
     // const uploadHandler = async () => {
@@ -63,9 +46,6 @@ const UserArea = ({ uploadEndpoint }) => {
     // }
 
     // Delete Handler - Hozom: Gábor
-
-    // Edit handler - Ez még kicsit homály, talán modalban kellene...
-
 
 
     return (

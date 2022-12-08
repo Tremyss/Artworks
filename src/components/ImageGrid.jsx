@@ -4,19 +4,19 @@ import ImageCard from "./ImageCard.jsx"
 import ImageDetails from "./ImageDetails.jsx"
 import Pager from "./Pager.jsx"
 import { saveAs } from "file-saver"
-import EditImage from "./EditImage.jsx"
+import EditImageModal from "./EditImageModal.jsx"
 
 const ImageGrid = ({ searchVal, isMyGallery }) => {
 
   // App state
   const [images, setImages] = useState([])
-// User images from DB
-const [userImages, setUserImages] = useState([]) // initben lehetne az összes képe 9-esével megjelenítve
+  // User images from DB
+  const [userImages, setUserImages] = useState([]) // initben lehetne az összes képe 9-esével megjelenítve
 
   // ImageDetails - Single Image Card state
   const [selectedImageId, setSelectedImageId] = useState(null)
   //Edit image
-  const [selectedImageEditId, setSelectedImageEditId] = useState(null)
+  const [selectedImageEditId, setSelectedImageEditId] = useState(false)
   // Pager states
   const [page, setPage] = useState(1)
   const [totalPageCount, setTotalPageCount] = useState(null)
@@ -63,7 +63,7 @@ const [userImages, setUserImages] = useState([]) // initben lehetne az összes k
             isMyGallery={isMyGallery}
             onDownloadImage={imgId => downloadImage(imgId)}
             onShowDetails={id => setSelectedImageId(id)}
-            onEditDetails={id => setSelectedImageEditId(id)}
+            onEditDetails={setSelectedImageEditId}
           />
         ))}
       <Pager
@@ -79,10 +79,9 @@ const [userImages, setUserImages] = useState([]) // initben lehetne az összes k
           onClose={() => setSelectedImageId(null)}
         />}
 
-      {selectedImageEditId !== null &&
-        <EditImage
-          selectedImageEdit={selectedImageEdit}
-          onClose={() => setSelectedImageEditId(null)}
+      {selectedImageEditId &&
+        <EditImageModal
+        onClose={setSelectedImageEditId}
         />}
 
     </div>
@@ -90,14 +89,3 @@ const [userImages, setUserImages] = useState([]) // initben lehetne az összes k
 }
 
 export default ImageGrid
-
-/* Minta a database-ről
-[
-    {
-        "id": "2465500f-ff23-4b44-88ea-99fbb8272a62",
-        "title": "Schiele_3",
-        "description": "kép",
-        "url": "localhost:8080/api/artwork/2465500f-ff23-4b44-88ea-99fbb8272a62.jpg"
-    }
-]
- */

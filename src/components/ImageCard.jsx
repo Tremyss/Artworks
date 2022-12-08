@@ -45,9 +45,7 @@ function ImageCard({ image, onDownloadImage, onShowDetails, onEditDetails, isMyG
                 edit image's data
               </span>
               <button className="image-card-download-button"
-                onClick={
-                  () => {onEditDetails(image.id)
-                }}
+                onClick={() => onEditDetails(true)}
               >
                 <span className="material-symbols-outlined">edit</span>
               </button>
