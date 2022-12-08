@@ -19,6 +19,7 @@ export const backendApi = "http://3.124.138.66"
 const signupEndpoint = "/api/signup"
 const loginEndpoint = "/api/login"
 const uploadEndpoint = "/api/artwork"
+const usersDataEndpoint = "/api/artwork"
 
 function App() {
 
@@ -35,11 +36,41 @@ function App() {
   // NAV Items' states
   const [isHome, setIsHome] = useState(true)
   const [isCollections, setIsCollections] = useState(false)
-  const [isMyGallery, setIsMyGallery] = useState(false)
+  const [isMyGallery, setIsMyGallery] = useState(false)  // ! *****
 
-  useEffect(() => {
-    console.log(isMyGallery)
-  }, [isMyGallery])
+
+
+
+
+
+const loadUsersData = async () => {
+  const accessToken = localStorage.getItem("accessToken")
+  console.log(accessToken)
+  const url = backendApi + usersDataEndpoint
+  const responseJson = await fetch (url, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${accessToken}`
+    }
+  })
+  const responseObject = await responseJson.json()
+  console.log(responseJson)
+  console.log(responseObject)
+}
+
+
+useEffect ( () => {
+  loadUsersData()
+}, [isLoggedIn])
+
+
+
+
+
+
+
+
+
 
   // ! UTIL FUNCTIONS
   // Search handler

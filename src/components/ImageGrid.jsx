@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import getData from "../api/getMuseumData.js"
+import getMuseumData from "../api/getMuseumData.js"
 import ImageCard from "./ImageCard.jsx"
 import ImageDetails from "./ImageDetails.jsx"
 import Pager from "./Pager.jsx"
@@ -23,7 +23,7 @@ const [userImages, setUserImages] = useState([]) // initben lehetne az összes k
 
 
   const loadData = async () => {
-    const [images, totalPage] = await getData(searchVal, page)
+    const [images, totalPage] = await getMuseumData(searchVal, page)
     setImages(images)
     setTotalPageCount(totalPage)
   }
@@ -50,7 +50,7 @@ const [userImages, setUserImages] = useState([]) // initben lehetne az összes k
   const selectedImage = images.find(img => img.id === selectedImageId)
 
   // Edit handler: Select image to edit details
-  const selectedImageEdit = userImages.find(img => img.id === selectedImageEditId)
+  // const selectedImageEdit = userImages.find(img => img.id === selectedImageEditId)
 
   return (
     <div id="image-grid">
