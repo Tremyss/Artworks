@@ -654,19 +654,21 @@ body {
 }
 
 #edit-card-content-mid-section {
-  background-color: green;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 #edit-card-content-img-container {
-  /* background-color: aqua; */
+  height: 10rem;
+  padding: 0 0.5rem;
 }
 
 #edit-card-content-img {
-  width: 80px;
+  height: 10rem;
 }
 
 #edit-card-content-inputs-container {
-  background-color: fuchsia;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -695,7 +697,7 @@ body {
   background-color: var(--accent);
   font-family: "Sorts Mill Goudy", serif;
   font-weight: 700;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   height: 2.5rem;
   margin: 0 2rem;
   padding: 1.3rem 0.5rem;
