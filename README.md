@@ -9,7 +9,7 @@ Pálinkás Bálint
 ### Frontend
 Neubauer Gábor, 
 Kalmár Lilla Anna, 
-NagyPáti Csaba, 
+Nagyapáti Csaba, 
 Cserenyecz Dóra
 ### Backend
 Bodnár Enikő, 
